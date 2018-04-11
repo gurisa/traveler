@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Header } from 'header';
+import { Header } from '../header/header';
 
 @Component({
   selector: 'app-header',
@@ -9,15 +9,16 @@ import { Header } from 'header';
 export class HeaderComponent implements OnInit { //export so we can use this component on another module
 
   header: Header = {
-    title: 'Traveler - Home Page',
+    title: 'Traveler - One stop point future',
     menu: [
       {name: 'Home', route: ''},
-      {name: 'About', route: 'about'},
+      {name: 'Catalog', route: 'catalog'},
+      {name: 'Booking', route: 'booking'},
+      {name: 'About', route: 'about'}
     ]
-  }
-  constructor() {//simple constructor fot this class
+  };
 
-  }
+  constructor() { }//simple constructor fot this class
 
   ngOnInit() { //after creating the componen, exec this
 
