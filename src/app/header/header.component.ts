@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Header } from '../header/header';
 
 @Component({
@@ -6,6 +7,7 @@ import { Header } from '../header/header';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+
 export class HeaderComponent implements OnInit { //export so we can use this component on another module
 
   header: Header = {

@@ -1,14 +1,12 @@
 <mat-sidenav-container>
-  <mat-sidenav #mainSideNav mode="side" opened>
-    <mat-toolbar color="primary">
-      <span fxFlex></span>
-      <h1>{{ header.title }}</h1>
-    </mat-toolbar>
+  <mat-sidenav #mainSideNav mode="side">
+    something here
   </mat-sidenav>
   <mat-toolbar color="primary">
     <button mat-icon-button (click)="mainSideNav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
+    <h1>{{ header.title }}</h1>
     <span fxFlex></span>
     <button mat-icon-button>
       <mat-icon>more_vert</mat-icon>
