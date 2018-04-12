@@ -4,20 +4,25 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule, MatGridListModule,
-  MatGridListModule, MatMenuModule,
-  MatToolbarModule, MatIconModule
+  MatMenuModule, MatToolbarModule, MatIconModule,
+  MatCardModule, MatSidenavModule
 } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
+    FlexLayoutModule,
     BrowserAnimationsModule, MatButtonModule,
-    MatGridListModule, MatGridListModule, MatMenuModule,
-    MatToolbarModule, MatIconModule
+    MatGridListModule, MatMenuModule,
+    MatToolbarModule, MatIconModule,
+    MatCardModule, MatSidenavModule
   ],
   exports: [
+    FlexLayoutModule,
     BrowserAnimationsModule, MatButtonModule,
-    MatGridListModule, MatGridListModule, MatMenuModule,
-    MatToolbarModule, MatIconModule
+    MatGridListModule, MatMenuModule,
+    MatToolbarModule, MatIconModule,
+    MatCardModule, MatSidenavModule
   ],
 })
 export class MaterialModule { }

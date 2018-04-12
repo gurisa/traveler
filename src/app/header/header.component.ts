@@ -9,7 +9,8 @@ import { Header } from '../header/header';
 export class HeaderComponent implements OnInit { //export so we can use this component on another module
 
   header: Header = {
-    title: 'Traveler - One stop point future',
+    title: 'Traveler',
+    description: 'One stop point future',
     menu: [
       {name: 'Home', route: ''},
       {name: 'Catalog', route: 'catalog'},
