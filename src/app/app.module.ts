@@ -6,8 +6,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
- 
-import { ButtonModule } from 'primeng/button';
 
 
 @NgModule({
@@ -20,7 +18,6 @@ import { ButtonModule } from 'primeng/button';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
