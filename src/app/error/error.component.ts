@@ -12,8 +12,8 @@ export class ErrorComponent implements OnInit {
   public page: string = "";
 
   constructor(
-    private location: Location;
-    private router: Router;
+    private location: Location,
+    private router: Router
   ) { }
 
   ngOnInit() {

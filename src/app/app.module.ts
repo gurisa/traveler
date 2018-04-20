@@ -10,6 +10,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ErrorComponent } from './error/error.component';
+import { TicketComponent } from './ticket/ticket.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ErrorComponent } from './error/error.component';
     FooterComponent,
     LoginComponent,
     RegisterComponent,
-    ErrorComponent
+    ErrorComponent,
+    TicketComponent
   ],
   imports: [
     BrowserModule,

@@ -10,15 +10,9 @@ import { Header } from '../header/header';
 
 export class HeaderComponent implements OnInit { //export so we can use this component on another module
 
-  header: Header = {
+  header = {
     title: 'Traveler',
     description: 'One stop point future',
-    menu: [
-      {name: 'Home', route: ''},
-      {name: 'Catalog', route: 'catalog'},
-      {name: 'Booking', route: 'booking'},
-      {name: 'About', route: 'about'}
-    ]
   };
 
   constructor() { }//simple constructor fot this class
@@ -27,7 +21,7 @@ export class HeaderComponent implements OnInit { //export so we can use this com
 
   }
 
-  showNavBar: void() {
+  public showNavBar() :void {
     alert('pop it up!');
   }
 }
