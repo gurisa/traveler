@@ -3,21 +3,21 @@
     <a class="navbar-item" routerLink="/">
       <img src="assets/images/logo/traveler.svg" alt="" width="128" height="40">
     </a>
-    <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+    <div class="navbar-burger burger" data-target="navMenu" aria-label="menu" aria-expanded="false" (click)="showNavBar()">
       <span></span><span></span><span></span>
     </div>
   </div>
 
-  <div class="navbar-menu">
+  <div class="navbar-menu" id="navMenu">
     <div class="navbar-start">
-      <a class="navbar-item" routerLink="/destination">Destination</a>
+      <a class="navbar-item" routerLink="/ticket">Ticket</a>
       <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link" routerLink="/promotion">Promotion</a>
-        <div class="navbar-dropdown is-boxed">          
-          <a class="navbar-item" routerLink="/promotion/limited-seat">Limited Seat</a>
-          <a class="navbar-item" routerLink="/promotion/night-edition">Night Edition</a>
-          <!-- <hr class="navbar-divider">
-          <a class="navbar-item" routerLink="/">Elements</a> -->
+        <a class="navbar-link">Ticket</a>
+        <div class="navbar-dropdown is-boxed">
+          <a class="navbar-item" routerLink="/ticket">All ticket</a>
+          <hr class="navbar-divider">
+          <a class="navbar-item" routerLink="/ticket/limited-seat">Limited Seat</a>
+          <a class="navbar-item" routerLink="/ticket/night-edition">Night Edition</a>                    
         </div>
       </div>
     </div>

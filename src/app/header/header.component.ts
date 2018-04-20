@@ -27,4 +27,7 @@ export class HeaderComponent implements OnInit { //export so we can use this com
 
   }
 
+  showNavBar: void() {
+    alert('pop it up!');
+  }
 }
