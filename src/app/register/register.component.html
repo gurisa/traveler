@@ -1,91 +1,57 @@
 <section class="section">
   <div class="container">
     <div class="columns">
-      <div class="column is-3">
-        <div class="field">
-          <label class="label">Name</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="Text input">
+      <div class="column is-7">
+          <figure class="image is-6by3">
+            <img src="assets/images/static/wallpaper1.jpg" alt="" />
+          </figure>
+      </div>
+      <div class="column is-5">
+        <div class="box">
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control has-icons-left has-icons-right">
+              <input class="input" type="email" placeholder="Email.." value="">
+              <span class="icon is-small is-left">
+                <i class="fa fa-at"></i>
+              </span>
+            </div>
           </div>
-        </div>
-        
-        <div class="field">
-          <label class="label">Username</label>
-          <div class="control has-icons-left has-icons-right">
-            <input class="input is-success" type="text" placeholder="Text input" value="bulma">
-            <span class="icon is-small is-left">
-              <i class="fas fa-user"></i>
-            </span>
-            <span class="icon is-small is-right">
-              <i class="fas fa-check"></i>
-            </span>
+  
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control has-icons-left has-icons-right">
+              <input class="input" type="text" placeholder="Password.." value="">
+              <span class="icon is-small is-left">
+                <i class="fa fa-lock"></i>
+              </span>
+              <!-- <span class="icon is-small is-right">
+                <i class="fa fa-check"></i>
+              </span> -->
+            </div>
+            <!-- <p class="help is-success">This username is available</p> -->
           </div>
-          <p class="help is-success">This username is available</p>
-        </div>
-        
-        <div class="field">
-          <label class="label">Email</label>
-          <div class="control has-icons-left has-icons-right">
-            <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
-            <span class="icon is-small is-left">
-              <i class="fas fa-envelope"></i>
-            </span>
-            <span class="icon is-small is-right">
-              <i class="fas fa-exclamation-triangle"></i>
-            </span>
+
+          <div class="field">
+            <div class="control">
+              <label class="checkbox">
+                <input type="checkbox" >
+                I agree to the <a routerLink="/tos">terms and conditions</a>
+              </label>
+            </div>
           </div>
-          <p class="help is-danger">This email is invalid</p>
-        </div>
-        
-        <div class="field">
-          <label class="label">Subject</label>
-          <div class="control">
-            <div class="select">
-              <select>
-                <option>Select dropdown</option>
-                <option>With options</option>
-              </select>
+
+          <div class="field">
+            <div class="control">  
+              Already have an account?
+              <a class="" routerLink="/login">Login now</a>
+              <button class="button is-dark is-outlined is-pulled-right">
+                <span>Register</span>                                      
+              </button>              
             </div>
           </div>
         </div>
-        
-        <div class="field">
-          <label class="label">Message</label>
-          <div class="control">
-            <textarea class="textarea" placeholder="Textarea"></textarea>
-          </div>
-        </div>
-        
-        <div class="field">
-          <div class="control">
-            <label class="checkbox">
-              <input type="checkbox">
-              I agree to the <a href="#">terms and conditions</a>
-            </label>
-          </div>
-        </div>
-        
-        <div class="field">
-          <div class="control">
-            <label class="radio">
-              <input type="radio" name="question">
-              Yes
-            </label>
-            <label class="radio">
-              <input type="radio" name="question">
-              No
-            </label>
-          </div>
-        </div>
-        
-        <div class="field is-grouped">
-          <div class="control">
-            <button class="button is-link">Submit</button>
-          </div>
-          <div class="control">
-            <button class="button is-text">Cancel</button>
-          </div>
-        </div>
+
       </div>
     </div>
   </div>

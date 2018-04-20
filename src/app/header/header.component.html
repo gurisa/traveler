@@ -1,6 +1,6 @@
 <nav class="navbar is-transparent is-fixed-top" style="height : 4rem;">
   <div class="navbar-brand">
-    <a class="navbar-item" href="">
+    <a class="navbar-item" routerLink="/">
       <img src="assets/images/logo/traveler.svg" alt="" width="128" height="40">
     </a>
     <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
@@ -10,14 +10,14 @@
 
   <div class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item" href="">Destination</a>
+      <a class="navbar-item" routerLink="/destination">Destination</a>
       <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link" href="">Promo</a>
+        <a class="navbar-link" routerLink="/promotion">Promotion</a>
         <div class="navbar-dropdown is-boxed">          
-          <a class="navbar-item" href="">Limited Seat</a>
-          <a class="navbar-item" href="">Night Edition</a>
+          <a class="navbar-item" routerLink="/promotion/limited-seat">Limited Seat</a>
+          <a class="navbar-item" routerLink="/promotion/night-edition">Night Edition</a>
           <!-- <hr class="navbar-divider">
-          <a class="navbar-item" href="">Elements</a> -->
+          <a class="navbar-item" routerLink="/">Elements</a> -->
         </div>
       </div>
     </div>
@@ -25,11 +25,14 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="field is-grouped">     
-          <p class="control">
+          <p class="control has-icons-right">
             <input class="input" type="text" placeholder="Paradise is awaiting..">
+            <span class="icon is-small is-right">
+              <i class="fa fa-search"></i>
+            </span>
           </p>       
           <p class="control">
-            <a class="button is-dark" href="register">
+            <a class="button is-dark" routerLink="/register">
               <span class="icon"><i class="fa fa-user-circle"></i></span>
               <span>Register</span>
             </a>
