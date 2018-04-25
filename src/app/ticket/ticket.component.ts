@@ -13,7 +13,7 @@ export class TicketComponent implements OnInit {
   constructor(private http: Http) {}
 
   ngOnInit() {
-    this.http.get('http://jsonplaceholder.typicode.com/posts')
+    this.http.get('http://traveler.local/api/v0/tickets')
     .subscribe(response => {
       this.tickets = response.json();
     });
