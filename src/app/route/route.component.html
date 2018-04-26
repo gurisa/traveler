@@ -1,0 +1,40 @@
+<section class="hero is-dark">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">Route</h1>
+      <h2 class="subtitle">Choose wherever you want to go :)</h2>
+    </div>
+  </div>
+</section>
+    
+  <section class="section">
+    <div class="container">
+  
+      <div class="columns is-multiline">
+        <div class="column is-4-desktop is-4-tablet is-12-mobile" *ngFor="let route of routes">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-5by3">
+                <img src="assets/images/static/placeholder.png" alt="Placeholder image">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-content">
+                  <p class="title is-4">{{ route.name }}</p>
+                  <p class="subtitle is-6">{{ route.origin_id + ' ' + route.destination_id }}</p>
+                </div>
+              </div>          
+              <div class="content">
+                {{ route.transportation_id }}
+                <br>
+                <time datetime="">{{ route.departure_at + ' ' + route.return_at }}</time>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  

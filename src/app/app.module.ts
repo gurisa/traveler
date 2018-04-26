@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ErrorComponent } from './error/error.component';
 import { TicketComponent } from './ticket/ticket.component';
+import { RouteComponent } from './route/route.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { TicketComponent } from './ticket/ticket.component';
     LoginComponent,
     RegisterComponent,
     ErrorComponent,
-    TicketComponent
+    TicketComponent,
+    RouteComponent
   ],
   imports: [
     BrowserModule,

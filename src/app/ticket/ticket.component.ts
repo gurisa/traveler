@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-ticket',
@@ -10,13 +9,10 @@ export class TicketComponent implements OnInit {
 
   tickets = [];
 
-  constructor(private http: Http) {}
+  constructor() {}
 
   ngOnInit() {
-    this.http.get('http://traveler.local/api/v0/tickets')
-    .subscribe(response => {
-      this.tickets = response.json();
-    });
+
   }
 
 }
