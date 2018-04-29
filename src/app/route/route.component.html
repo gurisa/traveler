@@ -10,7 +10,7 @@
   <section class="section">
     <div class="container">
   
-      <div class="columns is-multiline">
+      <div class="columns is-multiline" *ngIf="routes?.length > 0">
         <div class="column is-4-desktop is-4-tablet is-12-mobile" *ngFor="let route of routes">
           <div class="card">
             <div class="card-image">
@@ -33,8 +33,11 @@
             </div>
           </div>
         </div>
-  
       </div>
+      <div class="columns" *ngIf="routes?.length < 0">
+        Tidak ada tujuan hidup ditemukan :(
+      </div>
+
     </div>
   </section>
   
