@@ -1,18 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BodyComponent } from './body/body.component';
-import { TicketComponent } from './ticket/ticket.component';
+
+import { HomeComponent } from './home/home.component';
 import { RouteComponent } from './route/route.component';
 import { RegisterComponent } from './register/register.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { ErrorComponent } from './error/error.component';
 
-const routes = [  
-  {
-    path: '', 
-    component: BodyComponent
-  },
+const routes: Routes = [  
   {
     path: 'route', 
     component: RouteComponent
@@ -26,21 +21,25 @@ const routes = [
     component: LoginComponent
   },
   {
-    path: 'dashboard', 
-    component: DashboardComponent
+    path: '', 
+    component: HomeComponent,
+    pathMatch: 'full'
   },
   {
     path: '**', 
     component: ErrorComponent
   }
-]
+];
 
 @NgModule({
   exports: [
     RouterModule
   ],
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(
+      routes,
+      // { enableTracing: true }
+    )
   ]
   // declarations: []
 })

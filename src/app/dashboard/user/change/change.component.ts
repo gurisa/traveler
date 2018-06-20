@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './change.component.html',
   styleUrls: ['./change.component.scss']
 })
-export class ChangeComponent implements OnInit {
+export class DashboardUserChangeComponent implements OnInit {
 
   constructor() { }
 
