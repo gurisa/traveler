@@ -22,7 +22,9 @@ export class RouteComponent implements OnInit {
   getRoutes() {
     this.http.get('http://traveler.local/api/v0/routes')
     .subscribe(response => {
-      this.routes = response.json();
+      if (response.json().status) {
+        this.routes = response.json().data;
+      }      
     });
   }
 }
