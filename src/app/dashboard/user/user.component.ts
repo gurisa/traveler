@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardUserComponent implements OnInit {
 
-  constructor() { }
+  users = [];
+
+  constructor(private http: Http) { 
+
+  }
 
   ngOnInit() {
+    this.getUsers();
+  }
+
+  getUsers() {
+    this.http.get('http://traveler.local/api/v0/users')
+    .subscribe(response => {
+      if (response.json().status) {
+        this.users = response.json().data;
+      }      
+    });
+  }
+
+  getUser(id) {
+    alert(id);
   }
 
 }

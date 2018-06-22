@@ -4,8 +4,68 @@
       <div class="column is-3">
         <dashboard-sidebar></dashboard-sidebar>
       </div>
-      <div class="column is-7">
-        add employee
+      <div class="column is-9">
+
+          <div class="columns">
+            <div class="column is-3">
+
+                <div class="field">
+                  <label class="label">Photo</label>
+                  <div class="control">
+                      <figure class="image is-128x128">
+                        <img src="https://bulma.io/images/placeholders/128x128.png">
+                      </figure>
+                  </div>
+                </div>
+                <div class="field is-grouped">
+                  <div class="control">
+                    <button class="button">Choose photo</button>
+                  </div>
+                </div>
+
+            </div>
+            <div class="column is-9">
+
+                <div class="field">
+                  <label class="label">Name</label>
+                  <div class="control has-icons-left has-icons-right">
+                    <input class="input is-success" type="text" placeholder="Name.." value="">
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                      <i class="fas fa-check"></i>
+                    </span>
+                  </div>
+                  <p class="help is-success">This name is available</p>
+                </div>
+
+                <div class="field">
+                  <label class="label">Position</label>
+                  <div class="control">
+                    <div class="select">
+                      <select name="position">
+                        <option value="driver">Driver</option>
+                        <option value="administrator">Administrator</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-12">
+
+                <div class="field is-grouped">
+                  <div class="control">
+                    <button class="button is-link">Add Employee</button>
+                  </div>
+                </div>
+
+            </div>
+          </div>
+                                                      
       </div>
     </div>
   </div>

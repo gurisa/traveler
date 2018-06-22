@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-route',

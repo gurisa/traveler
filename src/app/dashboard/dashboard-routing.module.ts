@@ -8,10 +8,15 @@ import { DashboardEmployeeAddComponent } from './employee/add/add.component';
 import { DashboardEmployeeChangeComponent } from './employee/change/change.component';
 
 import { DashboardUserComponent } from './user/user.component';
-import { DashboardUserAddComponent } from './user/add/add.component';
 import { DashboardUserChangeComponent } from './user/change/change.component';
 
-import { DashboardProfileComponent } from './profile/profile.component';
+import { DashboardTransportationComponent } from './transportation/transportation.component';
+import { DashboardTransportationAddComponent } from './transportation/add/add.component';
+import { DashboardTransportationChangeComponent } from './transportation/change/change.component';
+
+import { DashboardRouteComponent } from './route/route.component';
+import { DashboardRouteAddComponent } from './route/add/add.component';
+import { DashboardRouteChangeComponent } from './route/change/change.component';
 
 import { DashboardReportComponent } from './report/report.component';
 import { DashboardReportIncomeComponent } from './report/income/income.component';
@@ -40,12 +45,32 @@ const dashboardRoutes: Routes = [
         component: DashboardUserComponent
       },
       {
-        path: 'user/add', 
-        component: DashboardUserAddComponent
-      },
-      {
         path: 'user/change', 
         component: DashboardUserChangeComponent
+      },
+      {
+        path: 'transportation', 
+        component: DashboardTransportationComponent
+      },
+      {
+        path: 'transportation/add', 
+        component: DashboardTransportationAddComponent
+      },
+      {
+        path: 'transportation/change', 
+        component: DashboardTransportationChangeComponent
+      },
+      {
+        path: 'route', 
+        component: DashboardRouteComponent
+      },
+      {
+        path: 'route/add', 
+        component: DashboardRouteAddComponent
+      },
+      {
+        path: 'route/change', 
+        component: DashboardRouteChangeComponent
       },
       {
         path: 'report', 
@@ -58,10 +83,6 @@ const dashboardRoutes: Routes = [
       {
         path: 'report/inventory', 
         component: DashboardReportInventoryComponent
-      },
-      {
-        path: 'profile', 
-        component: DashboardProfileComponent
       },
       {
         path: 'transaction', 

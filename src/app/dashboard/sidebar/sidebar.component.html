@@ -13,7 +13,6 @@
       <p class="menu-label">User</p>
       <ul>
         <li><a routerLink="/dashboard/user" [routerLinkActive]="['is-active']" [routerLinkActiveOptions]="{exact: true}">Manage user</a></li>
-        <li><a routerLink="/dashboard/user/add" [routerLinkActive]="['is-active']" [routerLinkActiveOptions]="{exact: true}">Add user</a></li>               
       </ul>
     </li>
     <li>
@@ -21,6 +20,20 @@
       <ul>
         <li><a routerLink="/dashboard/employee" [routerLinkActive]="['is-active']" [routerLinkActiveOptions]="{exact: true}">Manage employee</a></li>
         <li><a routerLink="/dashboard/employee/add" [routerLinkActive]="['is-active']" [routerLinkActiveOptions]="{exact: true}">Add employee</a></li>
+      </ul>
+    </li>
+    <li>
+      <p class="menu-label">Transportation</p>
+      <ul>
+        <li><a routerLink="/dashboard/transportation" [routerLinkActive]="['is-active']" [routerLinkActiveOptions]="{exact: true}">Manage transportation</a></li>
+        <li><a routerLink="/dashboard/transportation/add" [routerLinkActive]="['is-active']" [routerLinkActiveOptions]="{exact: true}">Add transportation</a></li>
+      </ul>
+    </li>
+    <li>
+      <p class="menu-label">Route</p>
+      <ul>
+        <li><a routerLink="/dashboard/route" [routerLinkActive]="['is-active']" [routerLinkActiveOptions]="{exact: true}">Manage route</a></li>
+        <li><a routerLink="/dashboard/route/add" [routerLinkActive]="['is-active']" [routerLinkActiveOptions]="{exact: true}">Add route</a></li>
       </ul>
     </li>
   </ul>
@@ -41,7 +54,6 @@
     Setting
   </p>
   <ul class="menu-list">
-    <li><a routerLink="/dashboard/profile" [routerLinkActive]="['is-active']" [routerLinkActiveOptions]="{exact: true}">Profile</a></li>
     <li><a routerLink="/logout">Logout</a></li>            
   </ul>
 </aside>

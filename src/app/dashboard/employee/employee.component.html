@@ -4,8 +4,50 @@
       <div class="column is-3">
         <dashboard-sidebar></dashboard-sidebar>
       </div>
-      <div class="column is-7">
-        employee
+      <div class="column is-9">
+        <table class="table" *ngIf="employees?.length > 0">
+          <thead>
+            <tr>
+              <th>Photo</th>
+              <th>Name</th>
+              <th><abbr title="Position">Position</abbr></th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <th>Photo</th>
+              <th>Name</th>
+              <th><abbr title="Position">Position</abbr></th>
+              <th>Action</th>
+            </tr>
+          </tfoot>
+          <tbody>
+            <tr class="" *ngFor="let employee of employees">
+              <td>
+                <figure class="image is-96x96">
+                  <img src="https://bulma.io/images/placeholders/128x128.png">
+                </figure>
+              </td>
+              <td>
+                {{ employee.name }}
+              </td>
+              <td>
+                {{ employee.position }}
+              </td>
+              <td>
+                <a class="button is-dark" routerLink="/dashboard/employee/change/{{employee.id}}">
+                  <span class="icon"><i class="fa fa-edit"></i></span>
+                  <span>Change</span>
+                </a>
+                <button class="button is-danger" (click)="getEmployee(employee.id);">
+                  <span class="icon"><i class="fa fa-close"></i></span>
+                  <span>Delete</span>
+                </button>
+              </td>
+            </tr>                        
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
