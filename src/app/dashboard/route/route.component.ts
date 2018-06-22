@@ -9,7 +9,7 @@ import { Http } from '@angular/http';
 export class DashboardRouteComponent implements OnInit {
 
   routes = [];
-
+  
   constructor(private http: Http) { 
 
   }
@@ -29,6 +29,5 @@ export class DashboardRouteComponent implements OnInit {
 
   getRoute(id) {
     alert(id);
-  }
-
+  }  
 }
