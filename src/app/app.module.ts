@@ -2,13 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router'; 
+
+import { AuthService } from './service/auth.service';
+import { AppRoutingModule } from './app-routing.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-
-import { AppRoutingModule } from './app-routing.module';
-import { DashboardModule } from './dashboard/dashboard.module';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -37,13 +40,15 @@ import { ModalComponent } from './core/modal/modal.component';
   ],
   imports: [
     HttpModule,
+    FormsModule,
     BrowserModule,
-    BrowserAnimationsModule,    
+    RouterModule,
+    BrowserAnimationsModule,  
     DashboardModule,
     AppRoutingModule,//must be the last lol
   ],
   providers: [
-
+    AuthService,
   ],
   bootstrap: [
     AppComponent

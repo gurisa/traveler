@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from "@angular/common";
+import { FormsModule } from '@angular/forms';
+
+import { AuthService } from './../service/auth.service';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 
@@ -32,7 +35,8 @@ import { DashboardRouteChangeComponent } from './route/change/change.component';
 @NgModule({
   imports: [
     DashboardRoutingModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   declarations: [
     DashboardComponent,
@@ -55,7 +59,7 @@ import { DashboardRouteChangeComponent } from './route/change/change.component';
     DashboardRouteChangeComponent,
   ],
   providers: [
-    
+    AuthService
   ],
   bootstrap: [
     DashboardComponent

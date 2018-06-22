@@ -8,10 +8,17 @@
               <img class="" src="assets/images/logo/traveler.svg" alt="" width="180" height="100">
             </a>
           </div>
+
+          <div class="field" *ngIf="invalidLogin">
+            <div class="notification is-danger">
+              Invalid email/password credential.
+            </div>
+          </div>
+
           <div class="field">
             <label class="label">Email</label>
             <div class="control has-icons-left has-icons-right">
-              <input class="input" type="email" placeholder="Email.." value="">
+              <input class="input" type="email" placeholder="Email.." value="" [(ngModel)]="account.email">
               <span class="icon is-small is-left">
                 <i class="fa fa-at"></i>
               </span>
@@ -21,7 +28,7 @@
           <div class="field">
             <label class="label">Password</label>
             <div class="control has-icons-left has-icons-right">
-              <input class="input" type="text" placeholder="Password.." value="">
+              <input class="input" type="password" placeholder="Password.." value="" [(ngModel)]="account.password">
               <span class="icon is-small is-left">
                 <i class="fa fa-lock"></i>
               </span>
@@ -43,7 +50,7 @@
           <div class="field">
             <div class="control">  
               Don't have an account? <a class="" routerLink="/register">Register</a>
-              <button class="button is-dark is-outlined is-pulled-right">Login</button>
+              <button class="button is-dark is-outlined is-pulled-right" (click)="signIn()">Login</button>
               <div class="is-clearfix"></div>            
             </div>
           </div>

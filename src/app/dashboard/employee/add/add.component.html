@@ -25,19 +25,30 @@
                     </figure>
                 </div>
               </div>
-              <div class="field is-grouped">
-                <div class="control">
-                  <button class="button">Choose photo</button>
+              
+              <div class="field">
+                <div class="file is-normal">
+                  <label class="file-label">
+                    <input class="file-input" type="file" name="thumbnail">
+                    <span class="file-cta">
+                      <!-- <span class="file-icon">
+                        <i class="fas fa-upload"></i>
+                      </span> -->
+                      <span class="file-label">
+                        Choose photo
+                      </span>
+                    </span>
+                  </label>
                 </div>
               </div>
 
           </div>
-          <div class="column is-9">
+          <div class="column is-6">
 
               <div class="field">
                 <label class="label">Name</label>
                 <div class="control has-icons-left has-icons-right">
-                  <input class="input is-success" type="text" placeholder="Name.." value="">
+                  <input class="input is-success" type="text" placeholder="Name.." value="" [(ngModel)]="employee.name">
                   <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                   </span>
@@ -52,7 +63,7 @@
                 <label class="label">Position</label>
                 <div class="control">
                   <div class="select">
-                    <select name="position">
+                    <select name="position" [(ngModel)]="employee.position">
                       <option value="driver">Driver</option>
                       <option value="administrator">Administrator</option>
                     </select>
@@ -63,14 +74,12 @@
           </div>
         </div>
         <div class="columns">
-          <div class="column is-12">
-
-              <div class="field is-grouped">
-                <div class="control">
-                  <button class="button is-link">Add Employee</button>
-                </div>
+          <div class="column is-9">
+            <div class="field">
+              <div class="control">
+                <button class="button is-link is-pulled-right" (click)="storeEmployee()">Add Employee</button>
               </div>
-
+            </div>
           </div>
         </div>
                                                       
