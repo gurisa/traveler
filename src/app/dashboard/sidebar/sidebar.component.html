@@ -5,10 +5,10 @@
   <ul class="menu-list">
     <li><a routerLink="/dashboard" [routerLinkActive]="['is-active']" [routerLinkActiveOptions]="{exact: true}">Dashboard</a></li>            
   </ul>
-  <p class="menu-label">
+  <p class="menu-label" *ngIf="AuthService.isAdmin()">
     Administration
   </p>
-  <ul class="menu-list">
+  <ul class="menu-list" *ngIf="AuthService.isAdmin()">
     <li>
       <p class="menu-label">User</p>
       <ul>

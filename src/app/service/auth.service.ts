@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { JwtHelper } from 'angular2-jwt';
 
 @Injectable()
 export class AuthService {
@@ -9,7 +10,7 @@ export class AuthService {
   }
 
   validate(credential) {    
-    if (credential && credential.email !== '' && credential.password !== '') {
+    if (credential && credential.email != '' && credential.password != '') {
        return true;
     }
     return false;
@@ -21,7 +22,8 @@ export class AuthService {
       .subscribe(response => {
         let res = response.json();
         if (res && res.status && res.data && res.data.token) {
-          localStorage.setItem('_token', res.data.token);
+          window.localStorage.setItem('token', res.data.token);
+          window.localStorage.setItem('user', JSON.stringify(res.data.user));
           return true;       
         }
         return false;
@@ -34,12 +36,45 @@ export class AuthService {
   }
 
   logout() { 
-    localStorage.removeItem('_token');    
+    window.localStorage.removeItem('token');
+    window.localStorage.removeItem('user');
   }
 
   isLoggedIn() { 
-    let token = localStorage.getItem('_token');
-    return (token) ? true : false;
+    let jwtHelper = new JwtHelper();
+    let token = window.localStorage.getItem('token');
+
+    if (!token) {
+      return false;
+    }
+    let expirationDate = jwtHelper.getTokenExpirationDate(token);
+    let isExpired = jwtHelper.isTokenExpired(token);
+
+    return !isExpired;
+  }
+
+  isAdmin() {
+    return (this.getUserAuthority() == 'root') || this.getUserAuthority() == 'administrator' ? true : false;
+  }
+
+  me() {
+    return JSON.parse(window.localStorage.getItem('user'));
+  }
+
+  getUserId() {
+    return this.me().id;
+  }
+
+  getUserName() {
+    return this.me().name;
+  }
+
+  getUserEmail() {
+    return this.me().email;
+  }
+
+  getUserAuthority() {
+    return this.me().authority;
   }
 
 }

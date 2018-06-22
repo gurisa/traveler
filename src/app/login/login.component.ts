@@ -31,10 +31,9 @@ export class LoginComponent implements OnInit {
   }
     
   signIn() {
-
-    if (this.AuthService.login(this.account)) {
-      this.invalidLogin = false;
-      this.router.navigate(['dashboard/']);     
+    if (this.AuthService.login(this.account)) {      
+      this.router.navigate(['dashboard/']);  
+      this.invalidLogin = false;   
     }
     else {
       this.invalidLogin = true;
