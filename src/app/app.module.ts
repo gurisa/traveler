@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router'; 
 
 import { AuthService } from './service/auth.service';
+import { AuthGuard } from './service/auth-guard.service';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 
@@ -49,6 +50,7 @@ import { ModalComponent } from './core/modal/modal.component';
   ],
   providers: [
     AuthService,
+    AuthGuard
   ],
   bootstrap: [
     AppComponent

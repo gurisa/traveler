@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from '@angular/forms';
 
 import { AuthService } from './../service/auth.service';
+import { AuthGuard } from '../service/auth-guard.service';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 
@@ -59,7 +60,8 @@ import { DashboardRouteChangeComponent } from './route/change/change.component';
     DashboardRouteChangeComponent,
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [
     DashboardComponent

@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+import { AuthGuard } from '../service/auth-guard.service';
+
 // import { DashboardComponent } from './dashboard.component';
 
 import { DashboardHomeComponent } from './home/home.component';
@@ -24,9 +27,11 @@ import { DashboardReportInventoryComponent } from './report/inventory/inventory.
 
 import { DashboardTransactionComponent } from './transaction/transaction.component';
 
+
 const dashboardRoutes: Routes = [
   {
     path: 'dashboard',
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'employee', 

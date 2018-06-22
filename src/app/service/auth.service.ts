@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { JwtHelper } from 'angular2-jwt';
+import { Router } from '@angular/router';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthService {
 
-  constructor(private http: Http) {
+  constructor(
+    private http: Http,
+    private router: Router
+  ) {
 
   }
 
@@ -18,8 +23,8 @@ export class AuthService {
 
   login(credential) {
     if (this.validate(credential)) {
-      this.http.post('http://traveler.local/api/v0/auth/login', credential)
-      .subscribe(response => {
+      return this.http.post('http://traveler.local/api/v0/auth/login', credential)
+      .map(response => {
         let res = response.json();
         if (res && res.status && res.data && res.data.token) {
           window.localStorage.setItem('token', res.data.token);
@@ -32,12 +37,12 @@ export class AuthService {
     else {
       alert('invalid account data');
     }
-    
   }
 
   logout() { 
     window.localStorage.removeItem('token');
     window.localStorage.removeItem('user');
+    this.router.navigate(['/login']);
   }
 
   isLoggedIn() { 

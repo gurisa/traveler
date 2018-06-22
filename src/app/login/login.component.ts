@@ -29,15 +29,18 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
   }
-    
+
   signIn() {
-    if (this.AuthService.login(this.account)) {      
-      this.router.navigate(['dashboard/']);  
-      this.invalidLogin = false;   
-    }
-    else {
-      this.invalidLogin = true;
-    }
+    this.AuthService.login(this.account)
+    .subscribe(response => {
+      if (response) {
+        this.invalidLogin = false;
+        this.router.navigate(['/dashboard']);
+      }
+      else {
+        this.invalidLogin = true;
+      }      
+    });
   }
   
 }
