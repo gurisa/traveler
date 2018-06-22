@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { GuestGuard } from './service/guest-guard.service';
+
 import { HomeComponent } from './home/home.component';
 import { RouteComponent } from './route/route.component';
 import { RegisterComponent } from './register/register.component';
@@ -14,11 +16,13 @@ const routes: Routes = [
   },
   {
     path: 'register', 
-    component: RegisterComponent
+    component: RegisterComponent,
+    canActivate: [GuestGuard]
   },
   {
     path: 'login', 
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [GuestGuard]
   },
   {
     path: '', 

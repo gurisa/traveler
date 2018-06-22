@@ -23,6 +23,7 @@ import { MainComponent } from './main/main.component';
 import { CoreComponent } from './core/core.component';
 import { MessageComponent } from './core/message/message.component';
 import { ModalComponent } from './core/modal/modal.component';
+import { GuestGuard } from './service/guest-guard.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { ModalComponent } from './core/modal/modal.component';
   ],
   providers: [
     AuthService,
-    AuthGuard
+    AuthGuard,
+    GuestGuard
   ],
   bootstrap: [
     AppComponent
