@@ -32,7 +32,7 @@
             </span>
           </p>       
           <p class="control">
-            <a class="button is-dark" routerLink="/register">
+            <a class="button is-dark" routerLink="/register" *ngIf="!AuthService.isLoggedIn()">
               <span class="icon"><i class="fa fa-user-circle"></i></span>
               <span>Register</span>
             </a>

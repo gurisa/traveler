@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgModule } from '@angular/core';
-import { Header } from '../header/header';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +14,9 @@ export class HeaderComponent implements OnInit { //export so we can use this com
     description: 'One stop point future',
   };
 
-  constructor() { }//simple constructor fot this class
+  constructor(
+    private AuthService: AuthService
+  ) { }//simple constructor fot this class
 
   ngOnInit() { //after creating the componen, exec this
 
