@@ -74,7 +74,7 @@ const dashboardRoutes: Routes = [
       },
       {
         path: 'report', 
-        component: DashboardReportComponent
+        redirectTo: 'report/income'
       },
       {
         path: 'report/income', 

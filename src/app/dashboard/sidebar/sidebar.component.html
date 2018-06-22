@@ -37,18 +37,18 @@
       </ul>
     </li>
     <li>
+      <p class="menu-label">Transactions</p>
+      <ul>
+          <li><a routerLink="/dashboard/transaction" [routerLinkActive]="['is-active']" [routerLinkActiveOptions]="{exact: true}">All Transaction</a></li>
+      </ul>
+    </li>
+    <li>
       <p class="menu-label">Reports</p>
       <ul>
           <li><a routerLink="/dashboard/report/income" [routerLinkActive]="['is-active']" [routerLinkActiveOptions]="{exact: true}">Income</a></li>
           <li><a routerLink="/dashboard/report/inventory" [routerLinkActive]="['is-active']" [routerLinkActiveOptions]="{exact: true}">Inventory</a></li>
       </ul>
     </li>
-  </ul>
-  <p class="menu-label">
-    Transactions
-  </p>
-  <ul class="menu-list">
-    <li><a routerLink="/dashboard/transaction" [routerLinkActive]="['is-active']" [routerLinkActiveOptions]="{exact: true}">All Transaction</a></li>
   </ul>
   <p class="menu-label">
     Setting

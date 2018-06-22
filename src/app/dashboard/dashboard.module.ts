@@ -21,7 +21,6 @@ import { DashboardReportComponent } from './report/report.component';
 import { DashboardReportIncomeComponent } from './report/income/income.component';
 import { DashboardReportInventoryComponent } from './report/inventory/inventory.component';
 
-import { DashboardProfileComponent } from './profile/profile.component';
 import { DashboardTransportationComponent } from './transportation/transportation.component';
 import { DashboardTransportationAddComponent } from './transportation/add/add.component';
 import { DashboardTransportationChangeComponent } from './transportation/change/change.component';
@@ -48,7 +47,6 @@ import { DashboardRouteChangeComponent } from './route/change/change.component';
     DashboardReportComponent,
     DashboardReportIncomeComponent,
     DashboardReportInventoryComponent,
-    DashboardProfileComponent,
     DashboardTransportationComponent,
     DashboardTransportationAddComponent,
     DashboardTransportationChangeComponent,

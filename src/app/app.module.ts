@@ -16,6 +16,9 @@ import { ErrorComponent } from './error/error.component';
 import { RouteComponent } from './route/route.component';
 import { HomeComponent } from './home/home.component';
 import { MainComponent } from './main/main.component';
+import { CoreComponent } from './core/core.component';
+import { MessageComponent } from './core/message/message.component';
+import { ModalComponent } from './core/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { MainComponent } from './main/main.component';
     RouteComponent,
     HomeComponent,
     MainComponent,
+    CoreComponent,
+    MessageComponent,
+    ModalComponent,
   ],
   imports: [
     HttpModule,

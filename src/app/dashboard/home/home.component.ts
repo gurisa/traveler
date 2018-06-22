@@ -7,9 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardHomeComponent implements OnInit {
 
-  constructor() { }
+  menu = [];
 
-  ngOnInit() {
+  constructor() { 
+    this.menu['profile'] = true;
+    this.menu['ticket'] = false;
+    this.menu['transaction'] = false;
   }
 
+  ngOnInit() {
+
+  }
+
+  showMenu(menu) {
+    if (menu) {
+      this.menu['profile'] = false;
+      this.menu['ticket'] = false;
+      this.menu['transaction'] = false;
+
+      this.menu[menu] = true;
+    }
+  }
 }
