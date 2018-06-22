@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-route',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardRouteComponent implements OnInit {
 
-  constructor() { }
+  routes = [];
+
+  constructor(private http: Http) { 
+
+  }
 
   ngOnInit() {
+    this.getRoutes();
+  }
+
+  getRoutes() {
+    this.http.get('http://traveler.local/api/v0/routes')
+    .subscribe(response => {
+      if (response.json().status) {
+        this.routes = response.json().data;
+      }      
+    });
+  }
+
+  getRoute(id) {
+    alert(id);
   }
 
 }

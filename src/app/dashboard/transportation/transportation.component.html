@@ -5,7 +5,55 @@
         <dashboard-sidebar></dashboard-sidebar>
       </div>
       <div class="column is-9">
-        transportation
+
+          <div class="">
+            <h1 class="title">Transportation</h1>
+            <h2 class="subtitle">
+              List of all available transportation.
+            </h2>
+            <hr>
+          </div>
+
+          <table class="table" *ngIf="transportations?.length > 0">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th><abbr title="type">Type</abbr></th>
+                <th>Capacity</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th>Name</th>
+                <th><abbr title="type">Type</abbr></th>
+                <th>Capacity</th>
+                <th>Action</th>
+              </tr>
+            </tfoot>
+            <tbody>
+              <tr class="" *ngFor="let transportation of transportations">
+                <td>
+                  {{ transportation.name }}
+                </td>
+                <td>
+                  {{ transportation.type }}
+                </td>
+                <td>
+                  {{ transportation.capacity }}
+                </td>
+                <td>
+                  <a class="button is-dark" routerLink="/dashboard/transportation/change/{{transportation.id}}">
+                    <span class="icon"><i class="fa fa-edit"></i></span>                    
+                  </a>
+                  <button class="button is-danger" (click)="getTransportation(transportation.id);">
+                    <span class="icon"><i class="fa fa-close"></i></span>                    
+                  </button>
+                </td>
+              </tr>                        
+            </tbody>
+          </table>
+
       </div>
     </div>
   </div>

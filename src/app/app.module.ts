@@ -15,9 +15,7 @@ import { RegisterComponent } from './register/register.component';
 import { ErrorComponent } from './error/error.component';
 import { RouteComponent } from './route/route.component';
 import { HomeComponent } from './home/home.component';
-import { CoreComponent } from './core/core.component';
 import { MainComponent } from './main/main.component';
-
 
 @NgModule({
   declarations: [
@@ -29,7 +27,6 @@ import { MainComponent } from './main/main.component';
     ErrorComponent,
     RouteComponent,
     HomeComponent,
-    CoreComponent,
     MainComponent,
   ],
   imports: [

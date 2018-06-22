@@ -5,7 +5,58 @@
         <dashboard-sidebar></dashboard-sidebar>
       </div>
       <div class="column is-9">
-        route
+
+        <div class="">
+          <h1 class="title">Route</h1>
+          <h2 class="subtitle">
+            List of all available route.
+          </h2>
+          <hr>
+        </div>
+
+        <table class="table" *ngIf="routes?.length > 0">
+          <thead>
+            <tr>
+              <th>Route</th>
+              <th><abbr title="Origin">Org.</abbr></th>
+              <th><abbr title="Destination">Dst.</abbr></th>
+              <th><abbr title="Departue & Arrive date">Date.</abbr></th>              
+              <th>Transportation</th>
+              <th>Driver</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <th>Route</th>
+              <th><abbr title="Origin">Org.</abbr></th>
+              <th><abbr title="Destination">Dst.</abbr></th>
+              <th><abbr title="Departue & Arrive date">Date.</abbr></th>              
+              <th>Transportation</th>
+              <th>Driver</th>
+              <th>Action</th>
+            </tr>
+          </tfoot>
+          <tbody>
+            <tr class="" *ngFor="let route of routes">
+              <td>{{ route.name }}</td>
+              <td>{{ route.origin_name }}</td>
+              <td>{{ route.destination_name }}</td>
+              <td>{{ route.departure_at }} {{ route.arrive_at }}</td>
+              <td>{{ route.transportation_name }}</td>
+              <td>{{ route.driver_name }}</td>
+              <td>
+                <a class="button is-dark" routerLink="/dashboard/route/change/{{route.id}}">
+                  <span class="icon"><i class="fa fa-edit"></i></span>                  
+                </a>
+                <button class="button is-danger" (click)="getRoute(route.id);">
+                  <span class="icon"><i class="fa fa-close"></i></span>                  
+                </button>
+              </td>
+            </tr>                        
+          </tbody>
+        </table>
+
       </div>
     </div>
   </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-transportation',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardTransportationComponent implements OnInit {
 
-  constructor() { }
+  transportations = [];
+
+  constructor(private http: Http) { }
 
   ngOnInit() {
+    this.getTransportations();
+  }
+
+  getTransportations() {
+    this.http.get('http://traveler.local/api/v0/transportations')
+    .subscribe(response => {
+      if (response.json().status) {
+        this.transportations = response.json().data;
+      }      
+    });
+  }
+
+  getTransportation(id) {
+    alert(id);
   }
 
 }

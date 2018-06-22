@@ -31,4 +31,17 @@ export class DashboardUserComponent implements OnInit {
     alert(id);
   }
 
+  openUserDialog() {
+    var element = document.getElementById('confirm-user');
+    if (element) {
+      element.classList.add('is-active');
+    }
+  }
+
+  closeUserDialog() {
+    var element = document.getElementById('confirm-user');
+    if (element) {
+      element.classList.remove('is-active');
+    }
+  }
 }

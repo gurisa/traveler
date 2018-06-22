@@ -5,6 +5,15 @@
         <dashboard-sidebar></dashboard-sidebar>
       </div>
       <div class="column is-9">
+
+        <div class="">
+          <h1 class="title">Employee</h1>
+          <h2 class="subtitle">
+            List of all available employee.
+          </h2>
+          <hr>
+        </div>
+
         <table class="table" *ngIf="employees?.length > 0">
           <thead>
             <tr>
@@ -37,12 +46,10 @@
               </td>
               <td>
                 <a class="button is-dark" routerLink="/dashboard/employee/change/{{employee.id}}">
-                  <span class="icon"><i class="fa fa-edit"></i></span>
-                  <span>Change</span>
+                  <span class="icon"><i class="fa fa-edit"></i></span>                  
                 </a>
                 <button class="button is-danger" (click)="getEmployee(employee.id);">
-                  <span class="icon"><i class="fa fa-close"></i></span>
-                  <span>Delete</span>
+                  <span class="icon"><i class="fa fa-close"></i></span>                  
                 </button>
               </td>
             </tr>                        

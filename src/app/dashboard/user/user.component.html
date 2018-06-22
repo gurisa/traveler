@@ -5,6 +5,15 @@
         <dashboard-sidebar></dashboard-sidebar>
       </div>
       <div class="column is-9">
+
+        <div class="">
+          <h1 class="title">User</h1>
+          <h2 class="subtitle">
+            List of all available user exclude you.
+          </h2>
+          <hr>
+        </div>
+
         <table class="table" *ngIf="users?.length > 0">
           <thead>
             <tr>
@@ -42,17 +51,33 @@
               </td>
               <td>
                 <a class="button is-dark" routerLink="/dashboard/user/change/{{user.id}}">
-                  <span class="icon"><i class="fa fa-edit"></i></span>
-                  <span>Change</span>
+                  <span class="icon"><i class="fa fa-edit"></i></span>                  
                 </a>
-                <button class="button is-danger" (click)="getUser(user.id);">
-                  <span class="icon"><i class="fa fa-close"></i></span>
-                  <span>Delete</span>
+                <button class="button is-danger" (click)="openUserDialog();">
+                  <span class="icon"><i class="fa fa-close"></i></span>                  
                 </button>
               </td>
             </tr>                        
           </tbody>
         </table>
+
+        <div id="confirm-user" class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-card">
+            <header class="modal-card-head">
+              <p class="modal-card-title">Modal title</p>
+              <button class="delete" aria-label="close" (click)="closeUserDialog();"></button>
+            </header>
+            <section class="modal-card-body">
+              Are you sure want to delete this user?
+            </section>
+            <footer class="modal-card-foot">
+              <button class="button is-success">Save changes</button>
+              <button class="button" (click)="closeUserDialog();">Cancel</button>
+            </footer>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
