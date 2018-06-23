@@ -45,6 +45,19 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
+  update(account) {
+    return this.http.patch('http://traveler.local/api/v0/users/' + this.getUserId(), account)
+      .map(
+        response => {
+          let res = response.json();
+          if (res && res.ok && res.status && res.data) {
+            window.localStorage.setItem('user', JSON.stringify(res.data.user));
+          }
+          return res;
+        }
+      );
+  }
+
   isLoggedIn() { 
     let jwtHelper = new JwtHelper();
     let token = window.localStorage.getItem('token');
@@ -64,6 +77,10 @@ export class AuthService {
 
   me() {
     return JSON.parse(window.localStorage.getItem('user'));
+  }
+
+  getToken() {
+    return window.localStorage.getItem('token');
   }
 
   getUserId() {

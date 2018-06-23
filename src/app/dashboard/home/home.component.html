@@ -64,25 +64,11 @@
   
             </div>
             <div class="column is-6">
-  
-                <div class="field">
-                  <label class="label">Email</label>
-                  <div class="control has-icons-left has-icons-right">
-                    <input class="input is-success" type="email" placeholder="Email.." value="{{ AuthService.getUserEmail() }}">
-                    <span class="icon is-small is-left">
-                      <i class="fas fa-envelope"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                      <i class="fas fa-check"></i>
-                    </span>
-                  </div>
-                  <p class="help is-success">This mail is available</p>
-                </div>
-                
+
               <div class="field">
                 <label class="label">Name</label>
                 <div class="control has-icons-left has-icons-right">
-                  <input class="input is-success" type="text" placeholder="Name.." value="{{ AuthService.getUserName() }}">
+                  <input class="input is-success" type="text" placeholder="Name.." value="{{ AuthService.getUserName() }}" [(ngModel)]="account.name">
                   <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                   </span>
@@ -92,6 +78,20 @@
                 </div>
                 <p class="help is-success">This name is available</p>
               </div>
+
+              <div class="field">
+                <label class="label">Password</label>
+                <div class="control has-icons-left has-icons-right">
+                  <input class="input is-success" type="password" placeholder="Password.." [(ngModel)]="account.password">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                  </span>
+                  <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                  </span>
+                </div>
+                <p class="help is-success">This password is available</p>
+              </div>              
   
             </div>
             
@@ -101,7 +101,7 @@
             <div class="column is-9">
               <div class="field">
                 <div class="control">
-                  <button class="button is-link is-pulled-right">Update profile</button>
+                  <button class="button is-link is-pulled-right" (click)="updateProfile()">Update profile</button>
                 </div>
               </div>
             </div>

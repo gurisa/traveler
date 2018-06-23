@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from './../service/auth.service';
 import { AuthGuard } from '../service/auth-guard.service';
 
+import { CoreModule } from './../core/core.module';
+
 import { DashboardRoutingModule } from './dashboard-routing.module';
 
 import { DashboardComponent } from './dashboard.component';
@@ -35,6 +37,7 @@ import { DashboardRouteChangeComponent } from './route/change/change.component';
 
 @NgModule({
   imports: [
+    CoreModule,
     DashboardRoutingModule,
     CommonModule,
     FormsModule
