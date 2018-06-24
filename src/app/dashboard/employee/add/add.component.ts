@@ -29,7 +29,7 @@ export class DashboardEmployeeAddComponent implements OnInit {
     return false;
   }
 
-  storeEmployee() {
+  storeEmployee() { 
     if (this.validateEmployee()) {
       let data = {
         name: this.employee.name,

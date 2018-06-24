@@ -50,10 +50,10 @@
                 {{ user.authority }}
               </td>
               <td>
-                <a class="button is-dark" routerLink="/dashboard/user/change/{{user.id}}">
+                <a class="button is-dark" (click)="changeUser(user.id);">
                   <span class="icon"><i class="fa fa-edit"></i></span>                  
                 </a>
-                <button class="button is-danger" (click)="openUserDialog();">
+                <button class="button is-danger" (click)="deleteUser(user.id);">
                   <span class="icon"><i class="fa fa-close"></i></span>                  
                 </button>
               </td>

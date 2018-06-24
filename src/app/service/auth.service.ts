@@ -50,8 +50,8 @@ export class AuthService {
       .map(
         response => {
           let res = response.json();
-          if (res && res.ok && res.status && res.data) {
-            window.localStorage.setItem('user', JSON.stringify(res.data.user));
+          if (res && res.status && res.data) {
+            window.localStorage.setItem('user', JSON.stringify(res.data));
           }
           return res;
         }

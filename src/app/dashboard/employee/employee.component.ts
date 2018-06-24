@@ -29,7 +29,25 @@ export class DashboardEmployeeComponent implements OnInit {
     });
   }
 
-  getEmployee(id) {
-    alert(id);
+  deleteEmployee(id) {    
+    if (id) {
+      if (confirm('Are you sure want to delete this employee?')) {
+        this.http.delete('http://traveler.local/api/v0/employees/' + id)
+        .subscribe(response => {
+          let index = this.employees.indexOf(id);
+          this.employees.splice(index, 1);
+        },
+        error => {
+          alert('fail delete employee');
+        },
+        () => {
+          alert('success delete employee');
+        });
+      }      
+    }
+    else {
+      alert('error occur');
+    }
   }
+  
 }

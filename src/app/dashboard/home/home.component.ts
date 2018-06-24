@@ -51,13 +51,10 @@ export class DashboardHomeComponent implements OnInit {
       this.AuthService.update(this.account)
       .subscribe(
         data => {
-          // if (data.ok) {
-          //   alert(data.message);
-          // }
+          alert(data.message);
         },
         error => {
-          alert(error._body.message);
-          console.log(error);
+          alert('failed to update profile');
         }
       );
     }

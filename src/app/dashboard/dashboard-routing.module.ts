@@ -21,7 +21,6 @@ import { DashboardRouteComponent } from './route/route.component';
 import { DashboardRouteAddComponent } from './route/add/add.component';
 import { DashboardRouteChangeComponent } from './route/change/change.component';
 
-import { DashboardReportComponent } from './report/report.component';
 import { DashboardReportIncomeComponent } from './report/income/income.component';
 import { DashboardReportInventoryComponent } from './report/inventory/inventory.component';
 
@@ -42,15 +41,19 @@ const dashboardRoutes: Routes = [
         component: DashboardEmployeeAddComponent
       },
       {
-        path: 'employee/change', 
+        path: 'employee/change/:id', 
         component: DashboardEmployeeChangeComponent
+      },
+      {
+        path: 'user/change/:id', 
+        component: DashboardUserChangeComponent
       },
       {
         path: 'user', 
         component: DashboardUserComponent
       },
       {
-        path: 'user/change', 
+        path: 'user/change/:id', 
         component: DashboardUserChangeComponent
       },
       {

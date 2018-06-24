@@ -30,9 +30,11 @@ import { DashboardReportInventoryComponent } from './report/inventory/inventory.
 import { DashboardTransportationComponent } from './transportation/transportation.component';
 import { DashboardTransportationAddComponent } from './transportation/add/add.component';
 import { DashboardTransportationChangeComponent } from './transportation/change/change.component';
+
 import { DashboardRouteComponent } from './route/route.component';
 import { DashboardRouteAddComponent } from './route/add/add.component';
 import { DashboardRouteChangeComponent } from './route/change/change.component';
+import { UserService } from '../service/user.service';
 
 
 @NgModule({
@@ -64,7 +66,8 @@ import { DashboardRouteChangeComponent } from './route/change/change.component';
   ],
   providers: [
     AuthService,
-    AuthGuard
+    AuthGuard,
+    UserService
   ],
   bootstrap: [
     DashboardComponent
