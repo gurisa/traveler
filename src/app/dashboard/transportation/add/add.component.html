@@ -20,7 +20,7 @@
                 <div class="field">
                   <label class="label">Name</label>
                   <div class="control has-icons-left has-icons-right">
-                    <input class="input is-success" type="text" placeholder="Name.." value="">
+                    <input class="input is-success" type="text" placeholder="Name.." value="" [(ngModel)]="transportation.name">
                     <span class="icon is-small is-left">
                       <i class="fas fa-user"></i>
                     </span>
@@ -34,7 +34,7 @@
                 <div class="field">
                   <label class="label">Capacity</label>
                   <div class="control has-icons-left has-icons-right">
-                    <input class="input" type="number" placeholder="Capacity.." value="">
+                    <input class="input" type="number" placeholder="Capacity.." value="" [(ngModel)]="transportation.capacity">
                     <span class="icon is-small is-left">
                       <i class="fas fa-user"></i>
                     </span>
@@ -48,7 +48,7 @@
                   <label class="label">Type</label>
                   <div class="control">
                     <div class="select">
-                      <select name="type">
+                      <select name="type" [(ngModel)]="transportation.type">
                         <option value="bus">Bus</option>
                         <option value="car">Car</option>
                       </select>
@@ -65,7 +65,7 @@
             <div class="column is-7">
               <div class="field">
                 <div class="control">
-                  <button class="button is-link is-pulled-right">Add transportation</button>
+                  <button class="button is-link is-pulled-right" (click)="store()">Add transportation</button>
                 </div>
               </div>
             </div>

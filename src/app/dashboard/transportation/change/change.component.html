@@ -5,7 +5,64 @@
         <dashboard-sidebar></dashboard-sidebar>
       </div>
       <div class="column is-9">
-        change transportation
+
+          <div class="columns">
+              <div class="column is-7">
+    
+                <div class="field">
+                  <label class="label">Name</label>
+                  <div class="control has-icons-left has-icons-right">
+                    <input class="input is-success" type="text" placeholder="Name.." value="" [(ngModel)]="transportation.name">
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                      <i class="fas fa-check"></i>
+                    </span>
+                  </div>
+                  <p class="help is-success">This name is available</p>
+                </div>
+                
+                <div class="field">
+                  <label class="label">Capacity</label>
+                  <div class="control has-icons-left has-icons-right">
+                    <input class="input" type="number" placeholder="Capacity.." value="" [(ngModel)]="transportation.capacity">
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                      <i class="fas fa-check"></i>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label class="label">Type</label>
+                  <div class="control">
+                    <div class="select">
+                      <select name="type" [(ngModel)]="transportation.type">
+                        <option value="bus">Bus</option>
+                        <option value="car">Car</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                
+            </div>
+            <div class="column is-5">
+    
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-7">
+              <div class="field">
+                <div class="control">
+                  <button class="button is-link is-pulled-right" (click)="update()">Update transportation</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
       </div>
     </div>
   </div>

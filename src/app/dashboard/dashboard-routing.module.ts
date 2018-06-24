@@ -65,7 +65,7 @@ const dashboardRoutes: Routes = [
         component: DashboardTransportationAddComponent
       },
       {
-        path: 'transportation/change', 
+        path: 'transportation/change/:id', 
         component: DashboardTransportationChangeComponent
       },
       {
@@ -77,7 +77,7 @@ const dashboardRoutes: Routes = [
         component: DashboardRouteAddComponent
       },
       {
-        path: 'route/change', 
+        path: 'route/change/:id', 
         component: DashboardRouteChangeComponent
       },
       {

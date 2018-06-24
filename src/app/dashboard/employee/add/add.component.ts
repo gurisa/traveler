@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { EmployeeService } from './../../../service/employee.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add',
@@ -8,12 +10,17 @@ import { Http } from '@angular/http';
 })
 export class DashboardEmployeeAddComponent implements OnInit {
 
-  employee = {
+  private employee = {
     name: '',
-    position: ''
+    position: '',
+    status: '1'
   };
 
-  constructor(private http: Http) { 
+  constructor(
+    private http: Http,
+    private router: Router,
+    private EmployeeService: EmployeeService
+  ) { 
     this.employee.name = '';
     this.employee.position = 'driver';
   }
@@ -31,15 +38,16 @@ export class DashboardEmployeeAddComponent implements OnInit {
 
   storeEmployee() { 
     if (this.validateEmployee()) {
-      let data = {
-        name: this.employee.name,
-        position: this.employee.position,
-        status: '1'
-      };
-      this.http.post('http://traveler.local/api/v0/employees', data)
-      .subscribe(response => {
-        var res = response.json();
-      });
+      this.EmployeeService.store(this.employee)
+        .subscribe(response => {
+          if (response && response.status) {
+            this.employee = response.data;
+            this.router.navigate(['/dashboard/employee']);
+          }     
+        },
+        error => {
+          alert('failed to update employee');
+        });
     }
     else {
       alert('invalid employee data');

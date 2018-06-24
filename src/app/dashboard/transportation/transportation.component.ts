@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { Router } from '@angular/router';
+import { TransportationService } from '../../service/transportation.service';
 
 @Component({
   selector: 'app-transportation',
@@ -8,25 +10,28 @@ import { Http } from '@angular/http';
 })
 export class DashboardTransportationComponent implements OnInit {
 
-  transportations = [];
+  private transportations = [];
 
-  constructor(private http: Http) { }
+  constructor(
+    private http: Http,
+    private router: Router,
+    private TransportationService: TransportationService
+  ) { }
 
   ngOnInit() {
-    this.getTransportations();
+    this.gets();
   }
 
-  getTransportations() {
-    this.http.get('http://traveler.local/api/v0/transportations')
+  gets() {
+    this.TransportationService.gets()
     .subscribe(response => {
-      if (response.json().status) {
-        this.transportations = response.json().data;
-      }      
+      if (response && response.status) {
+        this.transportations = response.data;
+      }     
     });
   }
 
-  getTransportation(id) {
-    alert(id);
-  }
+  delete(id) {
 
+  }
 }

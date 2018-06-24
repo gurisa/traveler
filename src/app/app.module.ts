@@ -19,8 +19,6 @@ import { RegisterComponent } from './register/register.component';
 import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
 import { GuestGuard } from './service/guest-guard.service';
-// import { HeaderComponent } from './core/header/header.component';
-// import { FooterComponent } from './core/footer/footer.component';
 
 @NgModule({
   declarations: [

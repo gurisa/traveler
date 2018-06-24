@@ -3,6 +3,12 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from '@angular/forms';
 
 import { AuthService } from './../service/auth.service';
+import { UserService } from '../service/user.service';
+import { EmployeeService } from '../service/employee.service';
+import { TransportationService } from '../service/transportation.service';
+import { TransactionService } from '../service/transaction.service';
+import { RouteService } from '../service/route.service';
+import { ReportService } from '../service/report.service';
 import { AuthGuard } from '../service/auth-guard.service';
 
 import { CoreModule } from './../core/core.module';
@@ -34,7 +40,6 @@ import { DashboardTransportationChangeComponent } from './transportation/change/
 import { DashboardRouteComponent } from './route/route.component';
 import { DashboardRouteAddComponent } from './route/add/add.component';
 import { DashboardRouteChangeComponent } from './route/change/change.component';
-import { UserService } from '../service/user.service';
 
 
 @NgModule({
@@ -67,7 +72,12 @@ import { UserService } from '../service/user.service';
   providers: [
     AuthService,
     AuthGuard,
-    UserService
+    UserService,
+    EmployeeService,
+    TransportationService,
+    TransactionService,
+    RouteService,
+    ReportService
   ],
   bootstrap: [
     DashboardComponent
