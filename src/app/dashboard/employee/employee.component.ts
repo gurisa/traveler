@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { EmployeeService } from '../../service/employee.service';
 
 @Component({
   selector: 'app-employee',
@@ -10,9 +11,12 @@ import { Http } from '@angular/http';
 
 export class DashboardEmployeeComponent implements OnInit {
 
-  employees = [];
+  private employees = [];
 
-  constructor(private http: Http) { 
+  constructor(
+    private http: Http,
+    private EmployeeService: EmployeeService
+  ) { 
     
   }
 
@@ -32,15 +36,17 @@ export class DashboardEmployeeComponent implements OnInit {
   delete(id) {    
     if (id) {
       if (confirm('Are you sure want to delete this employee?')) {
-        this.http.delete('http://traveler.local/api/v0/employees/' + id)
+        this.EmployeeService.delete(id)
         .subscribe(response => {
-          let index = this.employees.indexOf(id);
-          this.employees.splice(index, 1);
+          if (response && response.status) {
+            let index = this.employees.indexOf(id);
+            this.employees.splice(index, 1);
+          }     
         },
         error => {
           alert('fail delete employee');
         });
-      }      
+      }   
     }
     else {
       alert('error occur');

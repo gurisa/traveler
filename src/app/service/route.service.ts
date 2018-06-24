@@ -38,4 +38,11 @@ export class RouteService {
       return response.json();
     });
   }
+
+  delete(id) {
+    return this.http.delete('http://traveler.local/api/v0/routes/' + id)
+    .map(response => {
+      return response.json();
+    });
+  }
 }

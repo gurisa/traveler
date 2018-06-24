@@ -5,7 +5,117 @@
         <dashboard-sidebar></dashboard-sidebar>
       </div>
       <div class="column is-9">
-        change route
+
+          <div class="columns">
+              <div class="column is-8">
+                
+                <div class="field">
+                  <label class="label">Name</label>
+                  <div class="control has-icons-left has-icons-right">
+                    <input class="input is-success" type="text" placeholder="Name.." value="" [(ngModel)]="route.name">
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                      <i class="fas fa-check"></i>
+                    </span>
+                  </div>
+                  <!-- <p class="help is-success">This name is available</p> -->
+                </div>
+                    
+              </div>
+          </div>
+    
+          <div class="columns">
+            <div class="column is-6">
+                
+                <div class="field">
+                  <label class="label">Departure Time</label>
+                  <div class="control has-icons-left has-icons-right">
+                    <input class="input" type="datetime-local" placeholder="" value="" [(ngModel)]="route.departure_at">
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                      <i class="fas fa-check"></i>
+                    </span>
+                  </div>
+                  <!-- <p class="help">This name is available</p> -->
+                </div>
+  
+                <div class="field">
+                  <label class="label">Return Time</label>
+                  <div class="control has-icons-left has-icons-right">
+                    <input class="input" type="datetime-local" placeholder="" value="" [(ngModel)]="route.return_at">
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                      <i class="fas fa-check"></i>
+                    </span>
+                  </div>
+                  <!-- <p class="help">This name is available</p> -->
+                </div>
+  
+                <div class="field">
+                  <label class="label">Transportation</label>
+                  <div class="control">
+                    <div class="select">
+                      <select name="transportation" [(ngModel)]="route.transportation_id">
+                        <option value="{{ transportation.id }}" *ngFor="let transportation of transportations">{{ transportation.name }}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                
+            </div>
+            <div class="column is-6">
+  
+                <div class="field">
+                  <label class="label">Origin</label>
+                  <div class="control">
+                    <div class="select">
+                      <select name="origin" [(ngModel)]="route.origin_id">
+                        <option value="{{ regency.id }}" *ngFor="let regency of regencies">{{ regency.name }}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="field">
+                  <label class="label">Destination</label>
+                  <div class="control">
+                    <div class="select">
+                      <select name="destination" [(ngModel)]="route.destination_id">
+                        <option value="{{ regency.id }}" *ngFor="let regency of regencies">{{ regency.name }}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="field">
+                  <label class="label">Driver</label>
+                  <div class="control">
+                    <div class="select">
+                      <select name="driver" [(ngModel)]="route.driver_id">
+                        <option value="{{ employee.id }}" *ngFor="let employee of employees">{{ employee.name }}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+  
+            </div>
+          </div>
+            
+          <div class="columns">
+            <div class="column is-12">
+              <div class="field">
+                <div class="control">
+                  <button class="button is-link is-pulled-right" (click)="update()">Update route</button>
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   </div>

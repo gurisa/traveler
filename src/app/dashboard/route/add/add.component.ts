@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { RouteService } from './../../../service/route.service';
+import { TransportationService } from './../../../service/transportation.service';
+import { EmployeeService } from './../../../service/employee.service';
 
 @Component({
   selector: 'app-add',
@@ -27,6 +29,8 @@ export class DashboardRouteAddComponent implements OnInit {
     private http: Http,
     private router: Router,
     private RouteService: RouteService,
+    private TransportationService: TransportationService,
+    private EmployeeService: EmployeeService
   ) {
 
   }
@@ -38,20 +42,20 @@ export class DashboardRouteAddComponent implements OnInit {
   }
   
   getTransportations() {
-    this.http.get('http://traveler.local/api/v0/transportations')
+    this.TransportationService.gets()
     .subscribe(response => {
-      if (response.json().status) {
-        this.transportations = response.json().data;
-      }      
+      if (response && response.status) {
+        this.transportations = response.data;
+      }     
     });
   }
 
   getEmployees() {
-    this.http.get('http://traveler.local/api/v0/employees')
+    this.EmployeeService.gets()
     .subscribe(response => {
-      if (response.json().status) {
-        this.employees = response.json().data;
-      }      
+      if (response && response.status) {
+        this.employees = response.data;
+      }     
     });
   }
 
@@ -94,4 +98,5 @@ export class DashboardRouteAddComponent implements OnInit {
       alert('invalid route data');
     }    
   }
+
 }

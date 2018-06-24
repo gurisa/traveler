@@ -33,4 +33,23 @@ export class DashboardRouteComponent implements OnInit {
     });
   }
 
+  delete(id) {    
+    if (id) {
+      if (confirm('Are you sure want to delete this route?')) {
+        this.RouteService.delete(id)
+        .subscribe(response => {
+          if (response && response.status) {
+            let index = this.routes.indexOf(id);
+            this.routes.splice(index, 1);
+          }
+        },
+        error => {
+          alert('fail delete route');
+        });
+      }   
+    }
+    else {
+      alert('error occur');
+    }
+  }
 }

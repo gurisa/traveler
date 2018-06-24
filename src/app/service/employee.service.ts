@@ -18,6 +18,13 @@ export class EmployeeService {
     });   
   }
   
+  gets() {
+    return this.http.get('http://traveler.local/api/v0/employees')
+    .map(response => {
+      return response.json();    
+    });
+  }
+
   update(id, employee) {
     return this.http.patch('http://traveler.local/api/v0/employees/' + id, employee)
       .map(response => {
@@ -27,6 +34,13 @@ export class EmployeeService {
 
   store(employee) {
     return this.http.post('http://traveler.local/api/v0/employees', employee)
+    .map(response => {
+      return response.json();
+    });
+  }
+  
+  delete(id) {
+    return this.http.delete('http://traveler.local/api/v0/employees/' + id)
     .map(response => {
       return response.json();
     });
