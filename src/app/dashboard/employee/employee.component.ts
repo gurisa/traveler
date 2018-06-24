@@ -17,10 +17,10 @@ export class DashboardEmployeeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getEmployees();
+    this.gets();
   }
   
-  getEmployees() {
+  gets() {
     this.http.get('http://traveler.local/api/v0/employees')
     .subscribe(response => {
       if (response.json().status) {
@@ -29,7 +29,7 @@ export class DashboardEmployeeComponent implements OnInit {
     });
   }
 
-  deleteEmployee(id) {    
+  delete(id) {    
     if (id) {
       if (confirm('Are you sure want to delete this employee?')) {
         this.http.delete('http://traveler.local/api/v0/employees/' + id)
@@ -39,9 +39,6 @@ export class DashboardEmployeeComponent implements OnInit {
         },
         error => {
           alert('fail delete employee');
-        },
-        () => {
-          alert('success delete employee');
         });
       }      
     }

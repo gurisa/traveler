@@ -31,7 +31,23 @@ export class DashboardTransportationComponent implements OnInit {
     });
   }
 
-  delete(id) {
-
+  delete(id) {    
+    if (id) {
+      if (confirm('Are you sure want to delete this transportation?')) {
+        this.TransportationService.delete(id)
+        .subscribe(response => {
+          if (response && response.status) {
+            let index = this.transportations.indexOf(id);
+            this.transportations.splice(index, 1);
+          }     
+        },
+        error => {
+          alert('fail delete transportation');
+        });
+      }   
+    }
+    else {
+      alert('error occur');
+    }
   }
 }
