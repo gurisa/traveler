@@ -4,7 +4,7 @@ import { isDevMode } from '@angular/core';
 @Injectable()
 export class AppSetting {
 
-  public static API = (isDevMode) ? 'http://traveler.local/api/v0' : 'http://tr4veler.gurisa.com/api/v0';
+  public static API = (!isDevMode) ? 'https://tr4veler.gurisa.com/api/v0' : 'http://traveler.local/api/v0';
   
   constructor() {
 
