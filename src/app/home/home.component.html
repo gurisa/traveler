@@ -16,7 +16,7 @@
               <article class="tile is-child">
                 <!-- <p class="title">Middle tile</p>
                 <p class="subtitle">With an image</p> -->
-                <figure class="image is-4by3">
+                <figure class="image is-16by9">
                   <img src="assets/images/static/wallpaper2.jpg">
                 </figure>
               </article>
@@ -110,7 +110,7 @@
                   </div>
                 </div>          
                 <div class="content">
-                  {{ route.transportation_name }}
+                  {{ route.transportation_name }} (Rp{{ route.price }})
                   <br>
                   <time datetime="">{{ route.departure_at + ' ' + route.return_at }}</time>
                 </div>
