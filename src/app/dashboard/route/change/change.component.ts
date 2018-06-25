@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { RouteService } from './../../../service/route.service';
 import { TransportationService } from './../../../service/transportation.service';
 import { EmployeeService } from './../../../service/employee.service';
+import { AppSetting } from './../../../app-setting.service';
 
 
 @Component({
@@ -13,11 +14,11 @@ import { EmployeeService } from './../../../service/employee.service';
 })
 export class DashboardRouteChangeComponent implements OnInit {
 
-  private id: String;
-  private transportations = [];
-  private employees = [];
-  private regencies = [];
-  private route = {
+  id;
+  transportations = [];
+  employees = [];
+  regencies = [];
+  route = {
     name: '',
     price: 0,
     origin_id: '',
@@ -66,7 +67,7 @@ export class DashboardRouteChangeComponent implements OnInit {
   }
 
   getRegencies() {
-    this.http.get('http://traveler.local/api/v0/regencies')
+    this.http.get(AppSetting.API + '/regencies')
     .subscribe(response => {
       if (response.json().status) {
         this.regencies = response.json().data;

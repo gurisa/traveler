@@ -29,6 +29,10 @@ export class DashboardHomeComponent implements OnInit {
     this.account.name = this.AuthService.getUserName();
   }
 
+  getAccountName() {
+    return this.account.name;
+  }
+  
   showMenu(menu) {
     if (menu) {
       this.menu['profile'] = false;

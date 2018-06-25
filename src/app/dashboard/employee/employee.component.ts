@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { EmployeeService } from '../../service/employee.service';
+import { AppSetting } from './../../app-setting.service';
 
 @Component({
   selector: 'app-employee',
@@ -24,8 +25,12 @@ export class DashboardEmployeeComponent implements OnInit {
     this.gets();
   }
   
+  getEmployees() {
+    return this.employees;
+  }
+  
   gets() {
-    this.http.get('http://traveler.local/api/v0/employees')
+    this.http.get(AppSetting.API + '/employees')
     .subscribe(response => {
       if (response.json().status) {
         this.employees = response.json().data;

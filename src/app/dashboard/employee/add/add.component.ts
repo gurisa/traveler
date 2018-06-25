@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardEmployeeAddComponent implements OnInit {
 
-  private employee = {
+  employee = {
     name: '',
     position: '',
     status: '1'

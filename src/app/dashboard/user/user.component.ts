@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { AuthService } from '../../service/auth.service';
 import { Router } from '@angular/router';
+import { AppSetting } from './../../app-setting.service';
 
 @Component({
   selector: 'app-user',
@@ -25,7 +26,7 @@ export class DashboardUserComponent implements OnInit {
   }
 
   getUsers() {
-    this.http.get('http://traveler.local/api/v0/users')
+    this.http.get(AppSetting.API + '/users')
     .subscribe(response => {
       if (response.json().status) {
         this.users = response.json().data;
@@ -50,7 +51,7 @@ export class DashboardUserComponent implements OnInit {
   deleteUser(id) {
     if (id && id != this.AuthService.getUserId()) {
       if (confirm('Are you sure want to delete this user?')) {
-        this.http.delete('http://traveler.local/api/v0/users/' + id)
+        this.http.delete(AppSetting.API + '/users/' + id)
         .subscribe(response => {
           let index = this.users.indexOf(id);
           this.users.splice(index, 1);

@@ -11,7 +11,7 @@ import { TransportationService } from './../../../service/transportation.service
 })
 export class DashboardTransportationAddComponent implements OnInit {
   
-  private transportation = {
+  transportation = {
     name: '',
     type: 'car',
     capacity: 1

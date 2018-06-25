@@ -10,7 +10,7 @@ import { TransportationService } from '../../service/transportation.service';
 })
 export class DashboardTransportationComponent implements OnInit {
 
-  private transportations = [];
+  transportations = [];
 
   constructor(
     private http: Http,

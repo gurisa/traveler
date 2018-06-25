@@ -5,10 +5,10 @@
   <ul class="menu-list">
     <li><a routerLink="/dashboard" [routerLinkActive]="['is-active']" [routerLinkActiveOptions]="{exact: true}">Dashboard</a></li>            
   </ul>
-  <p class="menu-label" *ngIf="AuthService.isAdmin()">
+  <p class="menu-label" *ngIf="isAdmin()">
     Administration
   </p>
-  <ul class="menu-list" *ngIf="AuthService.isAdmin()">
+  <ul class="menu-list" *ngIf="isAdmin()">
     <li>
       <p class="menu-label">User</p>
       <ul>
@@ -54,6 +54,6 @@
     Setting
   </p>
   <ul class="menu-list">
-    <li><a (click)="AuthService.logout()">Logout</a></li>            
+    <li><a (click)="logout()">Logout</a></li>            
   </ul>
 </aside>

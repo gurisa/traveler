@@ -24,16 +24,16 @@
       <div class="navbar-item">
         <div class="field is-grouped">     
           <div class="control">
-            <a class="button is-danger" routerLink="/dashboard" *ngIf="AuthService.isLoggedIn()">
+            <a class="button is-danger" routerLink="/dashboard" *ngIf="getAuthSerivce().isLoggedIn()">
               <span class="icon"><i class="fas fa-shopping-cart"></i></span>
             </a>
           </div>
           <div class="control">
-            <a class="button is-dark" routerLink="/register" *ngIf="!AuthService.isLoggedIn()">
+            <a class="button is-dark" routerLink="/register" *ngIf="!getAuthSerivce().isLoggedIn()">
               <span class="icon"><i class="fa fa-user-circle"></i></span>
               <span>Register</span>
             </a>
-            <a class="button is-dark" routerLink="/dashboard" *ngIf="AuthService.isLoggedIn()">
+            <a class="button is-dark" routerLink="/dashboard" *ngIf="getAuthSerivce().isLoggedIn()">
               <span class="icon"><i class="fa fa-user-circle"></i></span>
               <span>Dashboard</span>
             </a>

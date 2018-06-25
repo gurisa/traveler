@@ -9,7 +9,7 @@
         <div class="">
           <h1 class="title">Dashboard</h1>
           <h2 class="subtitle">
-            Welcome home, {{ AuthService.getUserName() }}
+            Welcome home, {{ getAccountName() }}
           </h2>
           <hr>
         </div>
@@ -68,7 +68,7 @@
               <div class="field">
                 <label class="label">Name</label>
                 <div class="control has-icons-left has-icons-right">
-                  <input class="input is-success" type="text" placeholder="Name.." value="{{ AuthService.getUserName() }}" [(ngModel)]="account.name">
+                  <input class="input is-success" type="text" placeholder="Name.." [(ngModel)]="account.name">
                   <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                   </span>

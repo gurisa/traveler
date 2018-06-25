@@ -10,7 +10,7 @@ import { RouteService } from './../../service/route.service';
 })
 export class DashboardRouteComponent implements OnInit {
 
-  private routes = [];
+  routes = [];
   
   constructor(
     private http: Http,

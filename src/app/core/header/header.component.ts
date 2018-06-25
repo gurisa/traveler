@@ -22,7 +22,11 @@ export class HeaderComponent implements OnInit { //export so we can use this com
 
   }
 
-  public showNavBar() :void {
+  showNavBar() :void {
     alert('pop it up!');
+  }
+
+  getAuthSerivce() {
+    return this.AuthService;
   }
 }

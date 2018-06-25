@@ -12,10 +12,10 @@ import { EmployeeService } from './../../../service/employee.service';
 })
 export class DashboardRouteAddComponent implements OnInit {
 
-  private transportations = [];
-  private employees = [];
-  private regencies = [];
-  private route = {
+  transportations = [];
+  employees = [];
+  regencies = [];
+  route = {
     name: '',
     price: 0,
     origin_id: '',

@@ -8,10 +8,21 @@ import { AuthService } from './../../service/auth.service';
 })
 export class DashboardSidebarComponent implements OnInit {
 
-  constructor(private AuthService: AuthService) { }
+  constructor(
+    private AuthService: AuthService
+  ) {
+
+  }
 
   ngOnInit() {
     
   }
+  
+  isAdmin() {
+    return this.AuthService.isAdmin();
+  }
 
+  logout() {
+    return this.AuthService.logout();
+  }
 }

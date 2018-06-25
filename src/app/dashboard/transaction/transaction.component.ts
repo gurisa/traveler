@@ -11,7 +11,7 @@ import { TransactionService } from './../../service/transaction.service';
 })
 export class DashboardTransactionComponent implements OnInit {
   
-  private transactions = [];
+  transactions = [];
 
   constructor(
     private http: Http,

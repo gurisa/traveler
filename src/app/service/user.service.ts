@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { AppSetting } from './../app-setting.service';
 
 @Injectable()
 export class UserService {
@@ -12,21 +13,21 @@ export class UserService {
   }
 
   get(id) {
-    return this.http.get('http://traveler.local/api/v0/users/' + id)
+    return this.http.get(AppSetting.API + '/users/' + id)
     .map(response => {
       return response.json();   
     });   
   }
   
   gets() {
-    return this.http.get('http://traveler.local/api/v0/users')
+    return this.http.get(AppSetting.API + '/users')
     .map(response => {
       return response.json();    
     });
   }
 
   update(id, user) {
-    return this.http.patch('http://traveler.local/api/v0/users/' + id, user)
+    return this.http.patch(AppSetting.API + '/users/' + id, user)
       .map(response => {
           return response.json();
       });

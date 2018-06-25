@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { JwtHelper } from 'angular2-jwt';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/map';
+import { AppSetting } from './../app-setting.service';
 
 @Injectable()
 export class AuthService {
@@ -23,7 +24,7 @@ export class AuthService {
 
   login(credential) {
     if (this.validate(credential)) {
-      return this.http.post('http://traveler.local/api/v0/auth/login', credential)
+      return this.http.post(AppSetting.API + '/auth/login', credential)
       .map(response => {
         let res = response.json();
         if (res && res.status && res.data && res.data.token) {
@@ -46,7 +47,7 @@ export class AuthService {
   }
 
   update(account) {
-    return this.http.patch('http://traveler.local/api/v0/users/' + this.getUserId(), account)
+    return this.http.patch(AppSetting.API + '/users/' + this.getUserId(), account)
       .map(
         response => {
           let res = response.json();

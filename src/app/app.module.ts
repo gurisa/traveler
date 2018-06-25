@@ -7,6 +7,8 @@ import { RouterModule } from '@angular/router';
 
 import { AuthService } from './service/auth.service';
 import { AuthGuard } from './service/auth-guard.service';
+import { GuestGuard } from './service/guest-guard.service';
+import { AppSetting } from './app-setting.service';
 
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,7 +20,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
-import { GuestGuard } from './service/guest-guard.service';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { GuestGuard } from './service/guest-guard.service';
   providers: [
     AuthService,
     AuthGuard,
-    GuestGuard
+    GuestGuard,
+    AppSetting
   ],
   bootstrap: [
     AppComponent

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-
+import { AppSetting } from './../app-setting.service'
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
         email: this.account.email,
         password: this.account.password
       };
-      this.http.post('http://traveler.local/api/v0/auth/register', data)
+      this.http.post(AppSetting.API + '/auth/register', data)
       .subscribe(response => {
         var res = response.json();
       });

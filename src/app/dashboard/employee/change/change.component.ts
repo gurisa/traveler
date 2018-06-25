@@ -11,8 +11,8 @@ import { EmployeeService } from './../../../service/employee.service';
 
 export class DashboardEmployeeChangeComponent implements OnInit {
 
-  private id: String;
-  private employee;
+  id;
+  employee;
 
   constructor(
     private http: Http,

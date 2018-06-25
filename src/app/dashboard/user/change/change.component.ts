@@ -31,6 +31,10 @@ export class DashboardUserChangeComponent implements OnInit {
     this.get();
   }
 
+  getUser() {
+    return this.user;
+  }
+
   get() {
     this.UserService.get(this.id)
     .subscribe(response => {

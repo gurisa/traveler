@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { UserService } from '../service/user.service';
-import { forEach } from '@angular/router/src/utils/collection';
+import { AppSetting } from './../app-setting.service';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +11,9 @@ import { forEach } from '@angular/router/src/utils/collection';
 })
 export class HomeComponent implements OnInit {
 
-  private routes = [];
-  private users = [];
-  private regencies = [];
+  routes = [];
+  users = [];
+  regencies = [];
 
   constructor(
     private http: Http,
@@ -28,9 +28,13 @@ export class HomeComponent implements OnInit {
     this.getUsers();
     this.getRegencies();
   }
+
+  getRouter() {
+    return this.router;
+  }
   
   getRoutes() {
-    this.http.get('http://traveler.local/api/v0/routes')
+    this.http.get(AppSetting.API + '/routes')
     .subscribe(response => {
       if (response.json().status) {
         this.routes = response.json().data;
@@ -48,7 +52,7 @@ export class HomeComponent implements OnInit {
   }
 
   getRegencies() {
-    this.http.get('http://traveler.local/api/v0/regencies')
+    this.http.get(AppSetting.API + '/regencies')
     .subscribe(response => {
       if (response.json().status) {
         this.regencies = response.json().data;

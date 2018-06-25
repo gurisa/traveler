@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+import { AppSetting } from './../app-setting.service';
+
+
 @Injectable()
 export class RouteService {
 
@@ -12,35 +15,35 @@ export class RouteService {
   }
   
   get(id) {
-    return this.http.get('http://traveler.local/api/v0/routes/' + id)
+    return this.http.get(AppSetting.API + '/routes/' + id)
     .map(response => {
       return response.json();   
     });   
   }
   
   gets() {
-    return this.http.get('http://traveler.local/api/v0/routes')
+    return this.http.get(AppSetting.API + '/routes')
     .map(response => {
       return response.json();    
     });
   }
 
   update(id, route) {
-    return this.http.patch('http://traveler.local/api/v0/routes/' + id, route)
+    return this.http.patch(AppSetting.API + '/routes/' + id, route)
       .map(response => {
           return response.json();
       });
   }
 
   store(route) {
-    return this.http.post('http://traveler.local/api/v0/routes', route)
+    return this.http.post(AppSetting.API + '/routes', route)
     .map(response => {
       return response.json();
     });
   }
 
   delete(id) {
-    return this.http.delete('http://traveler.local/api/v0/routes/' + id)
+    return this.http.delete(AppSetting.API + '/routes/' + id)
     .map(response => {
       return response.json();
     });
