@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MessageComponent } from './message/message.component';
 import { ModalComponent } from './modal/modal.component';
+import { CoreComponent } from './core.component';
 
 @NgModule({
   imports: [
@@ -17,13 +18,15 @@ import { ModalComponent } from './modal/modal.component';
     HeaderComponent,
     FooterComponent,
     MessageComponent,
-    ModalComponent
+    ModalComponent,
+    CoreComponent
   ],
   declarations: [
     HeaderComponent,
     FooterComponent,
     MessageComponent,
-    ModalComponent
+    ModalComponent,
+    CoreComponent
   ]
 })
 export class CoreModule { }
