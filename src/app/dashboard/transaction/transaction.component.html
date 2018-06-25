@@ -6,13 +6,49 @@
       </div>
       <div class="column is-7">
 
-          <div class="">
-            <h1 class="title">Transaction</h1>
-            <h2 class="subtitle">
-              All of your transaction.
-            </h2>
-            <hr>
-          </div>
+        <div class="">
+          <h1 class="title">Transaction</h1>
+          <h2 class="subtitle">
+            All of your transaction.
+          </h2>
+          <hr>
+        </div>
+
+        <table class="table" *ngIf="transactions?.length > 0">
+          <thead>
+            <tr>
+              <th>Total</th>
+              <th>User</th>
+              <th>Employee</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <th>Total</th>
+              <th>User</th>
+              <th>Employee</th>
+              <th>Status</th>
+            </tr>
+          </tfoot>
+          <tbody>
+            <tr class="" *ngFor="let transaction of transactions">
+              <td>{{ transaction.total }}</td>
+              <td>{{ transaction.user_name }}</td>
+              <td>{{ transaction.employee_name }}</td>
+              <td>
+                  <button class="button is-success" (click)="paid(transaction.id)" *ngIf="transaction.status == 0">
+                    <span class="icon"><i class="fa fa-check"></i></span>
+                    <span>Mark as Paid</span>                
+                  </button>
+                  <button class="button is-danger" (click)="unpaid(transaction.id)" *ngIf="transaction.status != 0">
+                    <span class="icon"><i class="fa fa-close"></i></span> 
+                    <span>Mark as Unpaid</span>                   
+                  </button>
+              </td>
+            </tr>                        
+          </tbody>
+        </table>
 
       </div>
     </div>
