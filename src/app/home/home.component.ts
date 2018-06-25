@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { UserService } from '../service/user.service';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-home',
@@ -53,5 +54,21 @@ export class HomeComponent implements OnInit {
         this.regencies = response.json().data;
       }      
     });
+  }
+
+  inc(route) {
+    alert(route);
+  }
+
+  dec(route) {
+    alert(route);
+  }
+
+  buy(route) {
+    alert(route);
+  }
+
+  addToCart(route) {
+    alert(route);
   }
 }

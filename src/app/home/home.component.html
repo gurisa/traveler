@@ -95,7 +95,7 @@
         </div>
             
         <div class="columns is-multiline">
-          <div class="column is-4-desktop is-4-tablet is-12-mobile" *ngFor="let route of routes">
+          <div class="column is-4-desktop is-4-tablet is-12-mobile" *ngFor="let route of routes; let i = index" [attr.data-index]="i">
             <div class="card">
               <!-- <div class="card-image">
                 <figure class="image is-5by3">
@@ -121,26 +121,26 @@
                     <div class="field is-grouped">
                       <div class="field has-addons">
                         <div class="control">
-                            <button class="button is-dark is-pulled-left">-</button>
+                            <button class="button is-dark is-pulled-left" (click)="dec('route-amount-' + i)">-</button>
                         </div>
                         <div class="control">
-                            <input class="input is-rounded" type="number" placeholder="" value="1" step="1" disabled>
+                            <input class="input is-rounded" id="route-amount-{{i}}" type="number" placeholder="" value="1" step="1" min="0">
                         </div>
                         <div class="control">
-                            <button class="button is-dark is-pulled-right">+</button>
+                            <button class="button is-dark is-pulled-right" (click)="inc('route-amount-' + i)">+</button>
                         </div>
                       </div>                      
                     </div>                              
                 </div>
                 <div class="card-footer-item">
                   <div class="buttons">
-                      <button class="button is-info">
+                      <button class="button is-info" (click)="addToCart(i)">
                           <span class="icon">
                             <i class="fas fa-cart-plus"></i>
                           </span>
                           <span>Add</span>
                       </button>
-                      <button class="button is-danger">
+                      <button class="button is-danger" (click)="buy(i)">
                           <span class="icon">
                             <i class="fas fa-shopping-cart"></i>
                           </span>
