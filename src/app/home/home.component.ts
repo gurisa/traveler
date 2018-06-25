@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
     this.getUsers();
     this.getRegencies();
   }
-
+  
   getRoutes() {
     this.http.get('http://traveler.local/api/v0/routes')
     .subscribe(response => {
