@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { Router } from '@angular/router';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-home',
@@ -8,14 +10,22 @@ import { Http } from '@angular/http';
 })
 export class HomeComponent implements OnInit {
 
-  routes = [];
+  private routes = [];
+  private users = [];
+  private regencies = [];
 
-  constructor(private http: Http) { 
-
+  constructor(
+    private http: Http,
+    private router: Router,
+    private UserService: UserService
+  ) { 
+    
   }
 
   ngOnInit() {
     this.getRoutes();
+    this.getUsers();
+    this.getRegencies();
   }
 
   getRoutes() {
@@ -27,4 +37,21 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  getUsers() {
+    this.UserService.gets()
+    .subscribe(response => {
+      if (response && response.status) {
+        this.users = response.data;
+      }     
+    });
+  }
+
+  getRegencies() {
+    this.http.get('http://traveler.local/api/v0/regencies')
+    .subscribe(response => {
+      if (response.json().status) {
+        this.regencies = response.json().data;
+      }      
+    });
+  }
 }

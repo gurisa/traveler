@@ -18,6 +18,13 @@ export class UserService {
     });   
   }
   
+  gets() {
+    return this.http.get('http://traveler.local/api/v0/users')
+    .map(response => {
+      return response.json();    
+    });
+  }
+
   update(id, user) {
     return this.http.patch('http://traveler.local/api/v0/users/' + id, user)
       .map(response => {

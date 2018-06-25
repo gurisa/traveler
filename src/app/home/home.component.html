@@ -12,43 +12,37 @@
       <div class="tile is-ancestor">
         <div class="tile is-vertical is-8">
           <div class="tile">
-            <div class="tile is-parent is-vertical">
-              <article class="tile is-child notification is-primary">
-                <p class="title">Vertical...</p>
-                <p class="subtitle">Top tile</p>
-              </article>
-              <article class="tile is-child notification is-warning">
-                <p class="title">...tiles</p>
-                <p class="subtitle">Bottom tile</p>
-              </article>
-            </div>
             <div class="tile is-parent">
-              <article class="tile is-child notification is-info">
-                <p class="title">Middle tile</p>
-                <p class="subtitle">With an image</p>
+              <article class="tile is-child">
+                <!-- <p class="title">Middle tile</p>
+                <p class="subtitle">With an image</p> -->
                 <figure class="image is-4by3">
-                  <img src="assets/images/static/placeholder.png">
+                  <img src="assets/images/static/wallpaper2.jpg">
                 </figure>
               </article>
             </div>
           </div>
           <div class="tile is-parent">
-            <article class="tile is-child notification is-danger">
-              <p class="title">Wide tile</p>
-              <p class="subtitle">Aligned with the right tile</p>
+            <article class="tile is-child notification is-danger" (click)="this.router.navigate(['/register'])">
+              <p class="title">Join right now!</p>
+              <p class="subtitle">Join your friend to enjoy life</p>
               <div class="content">
-                <!-- Content -->
+                  <div class="tags">
+                    <span class="tag" *ngFor="let user of users">{{user.name}}</span>
+                  </div>
               </div>
             </article>
           </div>
         </div>
         <div class="tile is-parent">
-          <article class="tile is-child notification is-success">
+          <article class="tile is-child notification is-info">
             <div class="content">
-              <p class="title">Tall tile</p>
-              <p class="subtitle">With even more content</p>
-              <div class="content">
-                <!-- Content -->
+              <p class="title">Holiday paradise</p>
+              <p class="subtitle">List of all route available</p>
+              <div class="content" *ngIf="routes?.length > 0">
+                <ul>
+                  <li *ngFor="let route of routes">{{ route.name }}</li>
+                </ul>
               </div>
             </div>
           </article>
@@ -68,16 +62,46 @@
 
   <section class="section">
     <div class="container">
-      
+ 
       <div *ngIf="routes?.length > 0">
+     
+        <div class="columns">
+          <div class="column is-5">
+            <div class="field">
+              <p class="control has-icons-left">
+                <span class="select" *ngIf="regencies?.length > 0">
+                  <select>
+                    <option *ngFor="let regency of regencies">{{regency.name}}</option>
+                  </select>
+                </span>
+                <span class="icon is-small is-left">
+                  <i class="fas fa-globe"></i>
+                </span>
+              </p>
+            </div>
+          </div>
+          <div class="column is-7">
+            <div class="field has-addons is-pulled-right">
+              <p class="control">
+                <input class="input" type="text" placeholder="Find your own paradise here..">
+              </p>
+              <p class="control">
+                <a class="button is-info">
+                    <i class="fas fa-search"></i>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+            
         <div class="columns is-multiline">
           <div class="column is-4-desktop is-4-tablet is-12-mobile" *ngFor="let route of routes">
             <div class="card">
-              <div class="card-image">
+              <!-- <div class="card-image">
                 <figure class="image is-5by3">
                   <img src="assets/images/static/placeholder.png" alt="Placeholder image">
                 </figure>
-              </div>
+              </div> -->
               <div class="card-content">
                 <div class="media">
                   <div class="media-content">
@@ -91,6 +115,40 @@
                   <time datetime="">{{ route.departure_at + ' ' + route.return_at }}</time>
                 </div>
               </div>
+              <footer class="card-footer">
+                <div class="card-footer-item">
+                    
+                    <div class="field is-grouped">
+                      <div class="field has-addons">
+                        <div class="control">
+                            <button class="button is-dark is-pulled-left">-</button>
+                        </div>
+                        <div class="control">
+                            <input class="input is-rounded" type="number" placeholder="" value="1" step="1">
+                        </div>
+                        <div class="control">
+                            <button class="button is-dark is-pulled-right">+</button>
+                        </div>
+                      </div>                      
+                    </div>                              
+                </div>
+                <div class="card-footer-item">
+                  <div class="buttons">
+                      <button class="button is-info">
+                          <span class="icon">
+                            <i class="fas fa-cart-plus"></i>
+                          </span>
+                          <span>Add</span>
+                      </button>
+                      <button class="button is-danger">
+                          <span class="icon">
+                            <i class="fas fa-shopping-cart"></i>
+                          </span>
+                          <span>Buy</span>
+                      </button>
+                  </div>                    
+                </div>
+              </footer>
             </div>
           </div>
         </div>

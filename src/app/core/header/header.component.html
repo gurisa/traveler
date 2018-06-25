@@ -23,13 +23,12 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="field is-grouped">     
-          <p class="control has-icons-right">
-            <input class="input" type="text" placeholder="Paradise is awaiting..">
-            <span class="icon is-small is-right">
-              <i class="fa fa-search"></i>
-            </span>
-          </p>
-          <p class="control">
+          <div class="control">
+            <a class="button is-danger" routerLink="/dashboard" *ngIf="AuthService.isLoggedIn()">
+              <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+            </a>
+          </div>
+          <div class="control">
             <a class="button is-dark" routerLink="/register" *ngIf="!AuthService.isLoggedIn()">
               <span class="icon"><i class="fa fa-user-circle"></i></span>
               <span>Register</span>
@@ -38,7 +37,7 @@
               <span class="icon"><i class="fa fa-user-circle"></i></span>
               <span>Dashboard</span>
             </a>
-          </p>
+          </div>
         </div>
       </div>
     </div>
