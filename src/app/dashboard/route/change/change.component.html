@@ -7,8 +7,8 @@
       <div class="column is-9">
 
           <div class="columns">
-              <div class="column is-8">
-                
+            <div class="column is-6">
+
                 <div class="field">
                   <label class="label">Name</label>
                   <div class="control has-icons-left has-icons-right">
@@ -22,13 +22,7 @@
                   </div>
                   <!-- <p class="help is-success">This name is available</p> -->
                 </div>
-                    
-              </div>
-          </div>
-    
-          <div class="columns">
-            <div class="column is-6">
-                
+
                 <div class="field">
                   <label class="label">Departure Time</label>
                   <div class="control has-icons-left has-icons-right">
@@ -71,6 +65,20 @@
             </div>
             <div class="column is-6">
   
+                <div class="field">
+                  <label class="label">Price</label>
+                  <div class="control has-icons-left has-icons-right">
+                    <input class="input" type="text" placeholder="Price.." value="" [(ngModel)]="route.price">
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                      <i class="fas fa-check"></i>
+                    </span>
+                  </div>
+                  <!-- <p class="help is-success">This name is available</p> -->
+                </div>
+
                 <div class="field">
                   <label class="label">Origin</label>
                   <div class="control">

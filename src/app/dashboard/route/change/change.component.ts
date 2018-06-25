@@ -19,6 +19,7 @@ export class DashboardRouteChangeComponent implements OnInit {
   private regencies = [];
   private route = {
     name: '',
+    price: 0,
     origin_id: '',
     destination_id: '',
     departure_at: '',
