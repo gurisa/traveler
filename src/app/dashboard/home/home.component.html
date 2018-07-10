@@ -9,7 +9,7 @@
         <div class="">
           <h1 class="title">Dashboard</h1>
           <h2 class="subtitle">
-            Welcome home, {{ getAccountName() }}
+            Welcome home, {{ account.name }} 
           </h2>
           <hr>
         </div>
@@ -22,22 +22,22 @@
                   <span>Profile</span> 
               </a>
             </li>
+            <li [ngClass]="{ 'is-active': menu['cart'] }" (click)="showMenu('cart');">
+              <a>
+                  <span class="icon"><i class="fas fa-money-check" aria-hidden="true"></i></span>
+                  <span>Cart</span>
+              </a>
+            </li>
             <li [ngClass]="{ 'is-active': menu['ticket'] }" (click)="showMenu('ticket');">
               <a>
                   <span class="icon"><i class="fas fa-ticket-alt" aria-hidden="true"></i></span>
                   <span>Ticket</span>
               </a>
             </li>
-            <li [ngClass]="{ 'is-active': menu['transaction'] }" (click)="showMenu('transaction');">
-              <a>
-                  <span class="icon"><i class="fas fa-money-check" aria-hidden="true"></i></span>
-                  <span>Transaction</span>
-              </a>
-            </li>
           </ul>
         </div>
 
-        <div id="profile" *ngIf="menu['profile']">
+        <div class="" id="profile" *ngIf="menu['profile']">
           <div class="columns">
             <div class="column is-3">
   
@@ -107,107 +107,101 @@
             </div>
           </div>
         </div>
-        
-        <div class="columns" id="ticket" *ngIf="menu['ticket']">
-          <div class="column is-8">
-
+                
+        <div class="" id="cart" *ngIf="menu['cart']">
+          <div class="columns is-multiline" *ngIf="carts?.length > 0">
+            <div class="column is-12">
+              <div class="buttons">
+                <button class="button is-danger" (click)="cancelAllCart()">
+                  <span class="fa ico"><i class="fa fa-close"></i></span>
+                  <span>Cancel all</span>                  
+                </button>
+                <button class="button is-dark" (click)="buyCart()">
+                    <span class="fa ico"><i class="fa fa-shopping-cart"></i></span>
+                    <span>Checkout</span> 
+                </button>
+              </div>
+            </div>
+            <div class="column is-6" *ngFor="let cart of carts; let i = index" [attr.data-index]="i">
               <div class="card">
                 <header class="card-header">
                   <p class="card-header-title">
-                    Ticket Name
+                    {{ cart.name }} <br> ({{ cart.transportation_name + ' - @Rp' + cart.price }})
                   </p>
-                  <!-- <a href="#" class="card-header-icon" aria-label="more options">
-                    <span class="icon">
-                      <i class="fas fa-angle-down" aria-hidden="true"></i>
-                    </span>
-                  </a> -->
                 </header>
                 <div class="card-content">
                   <div class="content">
-                    <a href="#">KOTA JAKARTA TIMUR - KOTA BANDUNG</a>                                                           
-                    <a href="#">@Prima Jasa A1</a>
-                    <br>
-                    <time datetime="">2018-04-26 18:47:06 2018-04-26 18:47:06</time>
+                    <p href="#">
+                      {{ cart.origin_name }} ({{cart.departure_at}})
+                      <br>
+                      {{ cart.destination_name }} ({{cart.return_at}})
+                    </p>
                   </div>
                 </div>
                 <footer class="card-footer">
-                  <a href="#" class="card-footer-item">Show Barcode</a>
-                  <a href="#" class="card-footer-item">Validate</a>
+                  <div class="card-footer-item">
+                    <div class="field is-grouped">
+                      <div class="field has-addons">
+                        <div class="control">
+                            <button class="button is-dark is-pulled-left" (click)="dec(cart.id)">-</button>
+                        </div>
+                        <div class="control">
+                            <input class="input" type="number" placeholder="" value="1" step="1" min="1" readonly [(ngModel)]="cart.cart">
+                        </div>
+                        <div class="control">
+                            <button class="button is-dark is-pulled-right" (click)="inc(cart.id)">+</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <a class="card-footer-item" (click)="cancelCart(cart.id)">
+                      <i class="fa fa-close"></i>
+                      <b>Cancel</b>
+                  </a>
                 </footer>
               </div>
-
+            </div>
+          </div>
+          <div class="columns" *ngIf="carts?.length == 0">
+            <div class="column is-12">
+              Belum ada tiket di dalam keranjang. <br>
+              Ayo <a routerLink="/">beli</a> dulu (^_^)/
+            </div> 
           </div>
         </div>
 
-        <div class="columns" id="transaction" *ngIf="menu['transaction']">
-          <div class="column is-9">
-              <nav class="panel">
-                <p class="panel-heading">
-                  repositories
-                </p>
-                <div class="panel-block">
-                  <p class="control has-icons-left">
-                    <input class="input is-small" type="text" placeholder="search">
-                    <span class="icon is-small is-left">
-                      <i class="fas fa-search" aria-hidden="true"></i>
-                    </span>
+        <div class="" id="ticket" *ngIf="menu['ticket']">
+          <div class="columns is-multiline" *ngIf="tickets?.length > 0">            
+            <div class="column is-6" *ngFor="let ticket of tickets; let i = index" [attr.data-index]="i">
+              <div class="card">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    {{ ticket.name }} <br> ({{ ticket.detail_amount + ' @Rp' + ticket.detail_price }})
                   </p>
+                </header>
+                <div class="card-content">
+                  <div class="content">
+                    <p>
+                      {{ticket.departure_at}} <br> {{ticket.return_at}}
+                    </p>
+                  </div>
                 </div>
-                <p class="panel-tabs">
-                  <a class="is-active">all</a>
-                  <a>public</a>
-                  <a>private</a>
-                  <a>sources</a>
-                  <a>forks</a>
-                </p>
-                <a class="panel-block is-active">
-                  <span class="panel-icon">
-                    <i class="fas fa-book" aria-hidden="true"></i>
-                  </span>
-                  bulma
-                </a>
-                <a class="panel-block">
-                  <span class="panel-icon">
-                    <i class="fas fa-book" aria-hidden="true"></i>
-                  </span>
-                  marksheet
-                </a>
-                <a class="panel-block">
-                  <span class="panel-icon">
-                    <i class="fas fa-book" aria-hidden="true"></i>
-                  </span>
-                  minireset.css
-                </a>
-                <a class="panel-block">
-                  <span class="panel-icon">
-                    <i class="fas fa-book" aria-hidden="true"></i>
-                  </span>
-                  jgthms.github.io
-                </a>
-                <a class="panel-block">
-                  <span class="panel-icon">
-                    <i class="fas fa-code-branch" aria-hidden="true"></i>
-                  </span>
-                  daniellowtw/infboard
-                </a>
-                <a class="panel-block">
-                  <span class="panel-icon">
-                    <i class="fas fa-code-branch" aria-hidden="true"></i>
-                  </span>
-                  mojs
-                </a>
-                <label class="panel-block">
-                  <input type="checkbox">
-                  remember me
-                </label>
-                <div class="panel-block">
-                  <button class="button is-link is-outlined is-fullwidth">
-                    reset all filters
-                  </button>
-                </div>
-              </nav>
+                <footer class="card-footer">
+                  <a class="card-footer-item" (click)="showCode(ticket.detail_id)">
+                      <b>Show Code</b>
+                  </a>
+                </footer>
+              </div>
+            </div>
+          </div>
+          <div class="columns" *ngIf="tickets?.length == 0">
+            <div class="column is-12">
+              Kamu belum mempunyai tiket apapun <br>
+              Ayo <a routerLink="/">beli</a> dulu (^_^)/
+            </div> 
           </div>
         </div>
+
 
       </div>
     </div>

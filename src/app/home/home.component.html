@@ -65,7 +65,7 @@
  
       <div *ngIf="routes?.length > 0">
      
-        <div class="columns">
+        <div class="columns" style="margin-bottom: 35px;">
           <div class="column is-5">
             <div class="field">
               <p class="control has-icons-left">
@@ -116,31 +116,30 @@
                 </div>
               </div>
               <footer class="card-footer">
-                <div class="card-footer-item">
-                    
+                <div class="card-footer-item">                    
                     <div class="field is-grouped">
                       <div class="field has-addons">
                         <div class="control">
-                            <button class="button is-dark is-pulled-left" (click)="dec('route-amount-' + i)">-</button>
+                            <button class="button is-dark is-pulled-left" (click)="dec(route.id)">-</button>
                         </div>
                         <div class="control">
-                            <input class="input is-rounded" id="route-amount-{{i}}" type="number" placeholder="" value="1" step="1" min="0">
+                            <input class="input" type="number" placeholder="" value="1" step="1" min="1" readonly [(ngModel)]="route.cart">
                         </div>
                         <div class="control">
-                            <button class="button is-dark is-pulled-right" (click)="inc('route-amount-' + i)">+</button>
+                            <button class="button is-dark is-pulled-right" (click)="inc(route.id)">+</button>
                         </div>
                       </div>                      
                     </div>                              
                 </div>
                 <div class="card-footer-item">
                   <div class="buttons">
-                      <button class="button is-info" (click)="addToCart(i)">
+                      <button class="button is-info" (click)="addToCart(route.id)">
                           <span class="icon">
                             <i class="fas fa-cart-plus"></i>
                           </span>
                           <span>Add</span>
                       </button>
-                      <button class="button is-danger" (click)="buy(i)">
+                      <button class="button is-danger" routerLink="/dashboard">
                           <span class="icon">
                             <i class="fas fa-shopping-cart"></i>
                           </span>

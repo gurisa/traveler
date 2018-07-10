@@ -20,6 +20,7 @@
                 <th>Name</th>
                 <th><abbr title="type">Type</abbr></th>
                 <th>Capacity</th>
+                <th>Status</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -28,6 +29,7 @@
                 <th>Name</th>
                 <th><abbr title="type">Type</abbr></th>
                 <th>Capacity</th>
+                <th>Status</th>
                 <th>Action</th>
               </tr>
             </tfoot>
@@ -41,6 +43,11 @@
                 </td>
                 <td>
                   {{ transportation.capacity }}
+                </td>
+                <td>
+                  <button class="button" [ngClass]="{ 'is-success': transportation.status, 'is-danger': !transportation.status }" (click)="status(transportation.id);">
+                    <span class="icon"><i class="fa " [ngClass]="{ 'fa-check' : transportation.status, 'fa-close' : !transportation.status }"></i></span>                    
+                  </button>
                 </td>
                 <td>
                   <a class="button is-dark" routerLink="/dashboard/transportation/change/{{transportation.id}}">

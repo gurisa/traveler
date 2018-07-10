@@ -16,7 +16,34 @@
 
           <div class="columns">
             <div class="column is-7">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam minus ea autem molestias fugit nemo vitae quas explicabo esse, dolores possimus asperiores magnam quasi eligendi laudantium ad, delectus voluptates blanditiis!              
+
+              <table class="table" *ngIf="dataInventory?.length > 0">
+                <thead>
+                  <tr>
+                    <th>Transportation</th>
+                    <th>Inactive</th>
+                    <th>Active</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>Transportation</th>
+                    <th>Inactive</th>
+                    <th>Active</th>
+                    <th>Total</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                  <tr class="" *ngFor="let data of dataInventory">
+                    <td>{{ data.name }}</td>
+                    <td>{{ data.inactive }}</td>
+                    <td>{{ data.active }}</td>
+                    <td>{{ data.total }}</td>
+                  </tr>                        
+                </tbody>
+              </table>
+
             </div>
             <div class="column is-5">
               <canvas id="inventory-report" width="400" height="400"></canvas>

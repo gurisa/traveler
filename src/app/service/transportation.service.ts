@@ -46,4 +46,11 @@ export class TransportationService {
       return response.json();
     });
   }
+
+  status(id) {
+    return this.http.post(AppSetting.API + '/transportations/' + id + '/status', {})
+      .map(response => {
+          return response.json();
+      });
+  }
 }

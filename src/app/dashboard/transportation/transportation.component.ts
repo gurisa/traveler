@@ -10,7 +10,7 @@ import { TransportationService } from '../../service/transportation.service';
 })
 export class DashboardTransportationComponent implements OnInit {
 
-  transportations = [];
+  transportations = []; 
 
   constructor(
     private http: Http,
@@ -48,6 +48,29 @@ export class DashboardTransportationComponent implements OnInit {
     }
     else {
       alert('error occur');
+    }
+  }
+
+  status(id) {
+    if (id) {
+      let status = false;
+      for (let i = 0; i < this.transportations.length; i++) {
+        if (this.transportations[i].id == id) {
+          status = this.transportations[i].status;
+        }
+      }
+      let text = (status) ? 'inactive' : 'active';
+      if (confirm('Mark this transportation as ' + text + '?')) {
+        this.TransportationService.status(id)
+        .subscribe(response => {
+          if (response && response.status) {            
+            this.gets();
+          }          
+        },
+        error => {
+          alert('failed change status');
+        });
+      } 
     }
   }
 }

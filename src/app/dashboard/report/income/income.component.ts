@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
+import { Http } from '@angular/http';
+import { Router } from '@angular/router';
+import { ReportService } from './../../../service/report.service';
 
 @Component({
   selector: 'app-income',
@@ -11,7 +14,9 @@ export class DashboardReportIncomeComponent implements OnInit {
   private incomeReport;
 
   constructor(
-
+    private http: Http,
+    private router: Router,
+    private ReportService: ReportService
   ) { 
 
   }

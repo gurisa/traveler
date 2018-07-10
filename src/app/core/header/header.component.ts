@@ -9,6 +9,8 @@ import { AuthService } from './../../service/auth.service';
 
 export class HeaderComponent implements OnInit { //export so we can use this component on another module
 
+  navbar = false;
+
   header = {
     title: 'Traveler',
     description: 'One stop point future',
@@ -22,11 +24,15 @@ export class HeaderComponent implements OnInit { //export so we can use this com
 
   }
 
-  showNavBar() :void {
-    alert('pop it up!');
+  toggleNavBar() :void {
+    this.navbar = !this.navbar;
   }
 
   getAuthSerivce() {
     return this.AuthService;
+  }
+
+  isAdmin() {
+    return this.AuthService.isAdmin();
   }
 }

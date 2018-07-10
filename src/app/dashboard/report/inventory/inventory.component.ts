@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
+import { Http } from '@angular/http';
+import { Router } from '@angular/router';
+import { ReportService } from './../../../service/report.service';
 
 @Component({
   selector: 'app-inventory',
@@ -8,14 +11,42 @@ import { Chart } from 'chart.js';
 })
 export class DashboardReportInventoryComponent implements OnInit {
 
-  private inventoryReport;
+  inventoryReport;
+  dataInventory = [];
+  dataInventoryReport = [];
 
-  constructor() {
+  constructor(
+    private http: Http,
+    private router: Router,
+    private ReportService: ReportService
+  ) {
 
   }
 
   ngOnInit() {
-    this.setChart("inventory-report");
+    this.get();
+  }
+
+  get() {    
+    this.ReportService.getInventory()
+    .subscribe(response => {
+      if (response && response.status) {
+
+        this.dataInventory = [
+          {'name': 'Bus', 'active': response.data.active.bus, 'inactive': response.data.inactive.bus, 'total': response.data.total.bus},
+          {'name': 'Plane', 'active': response.data.active.plane, 'inactive': response.data.inactive.plane, 'total': response.data.total.plane},
+          {'name': 'Train', 'active': response.data.active.train, 'inactive': response.data.inactive.train, 'total': response.data.total.train},
+          {'name': 'Car', 'active': response.data.active.car, 'inactive': response.data.inactive.car, 'total': response.data.total.car},
+        ];
+
+        this.dataInventoryReport = [response.data.total.bus, response.data.total.plane, response.data.total.train, response.data.total.car];        
+        this.setChart("inventory-report");
+      }    
+    },
+    error => {
+      this.dataInventoryReport = [0, 0, 0, 0];
+      alert('failed to load inventory data');
+    });
   }
 
   setChart(identifier) {
@@ -24,7 +55,7 @@ export class DashboardReportInventoryComponent implements OnInit {
         type: 'doughnut',
         data: {
           datasets: [{
-            data: [10, 20, 30, 25],
+            data: this.dataInventoryReport,
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',

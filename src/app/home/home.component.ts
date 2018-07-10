@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getRoutes();
+    this.getRoutes();    
     this.getUsers();
     this.getRegencies();
   }
@@ -38,8 +38,16 @@ export class HomeComponent implements OnInit {
     .subscribe(response => {
       if (response.json().status) {
         this.routes = response.json().data;
+        this.adjustRoutes();
       }      
-    });
+    });    
+  }
+
+  adjustRoutes() {
+    let max = this.routes.length;
+    for (var i = 0; i < max; i++) {
+      this.routes[i].cart = 1;
+    }
   }
 
   getUsers() {
@@ -61,18 +69,53 @@ export class HomeComponent implements OnInit {
   }
 
   inc(route) {
-    alert(route);
+    for (let i = 0; i < this.routes.length; i++) {
+      if (this.routes[i].id == route) {
+        this.routes[i].cart++;
+      }
+    }
   }
 
   dec(route) {
-    alert(route);
+    for (let i = 0; i < this.routes.length; i++) {
+      if (this.routes[i].id == route && this.routes[i].cart > 1) {
+        this.routes[i].cart--;
+      }
+    }
   }
 
-  buy(route) {
-    alert(route);
+  getCart() {
+    return JSON.parse(localStorage.getItem('cart')) || [];
+  }
+
+  getRoute(route) {
+    for (let i = 0; i < this.routes.length; i++) {
+      if (this.routes[i].id === route) {
+        return this.routes[i];
+      }
+    }
   }
 
   addToCart(route) {
-    alert(route);
+    let cart = this.getCart();
+    let index = -1;
+
+    if (cart && cart.length > 0) {      
+      for (let i = 0; i < cart.length; i++) {
+        if (cart[i] && cart[i].id === route) {
+          index = i;
+        }
+      }
+    }
+
+    let data = this.getRoute(route);
+    if (index !== -1) {
+      cart[index].cart += data.cart;
+    }
+    else {  
+      cart.push(data);
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
   }
 }

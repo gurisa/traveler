@@ -40,10 +40,13 @@ export class AuthService {
     }
   }
 
-  logout() { 
-    window.localStorage.removeItem('token');
-    window.localStorage.removeItem('user');
-    this.router.navigate(['/login']);
+  logout() {
+    if (confirm('Are you sure want to logout?')) {
+      window.localStorage.removeItem('token');
+      window.localStorage.removeItem('user');
+      window.localStorage.removeItem('cart');
+      this.router.navigate(['/login']);
+    }
   }
 
   update(account) {

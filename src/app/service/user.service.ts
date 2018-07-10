@@ -33,4 +33,17 @@ export class UserService {
       });
   }
 
+  getTransaction(id) {
+    return this.http.get(AppSetting.API + '/users/' + id + '/transactions')
+    .map(response => {
+      return response.json();   
+    }); 
+  }
+
+  getTransactionDetail(id) {
+    return this.http.get(AppSetting.API + '/users/' + id + '/details')
+    .map(response => {
+      return response.json();   
+    });
+  }
 }
