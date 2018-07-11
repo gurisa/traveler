@@ -11,7 +11,9 @@ import { ReportService } from './../../../service/report.service';
 })
 export class DashboardReportIncomeComponent implements OnInit {
 
-  private incomeReport;
+  incomeReport;
+  month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  dataIncome = {labels: [], data: [], original: [], total: 0};
 
   constructor(
     private http: Http,
@@ -22,7 +24,25 @@ export class DashboardReportIncomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.setChart("income-report");
+    this.get();
+  }
+
+  get() {    
+    this.ReportService.getIncome()
+    .subscribe(response => {
+      if (response && response.status) {
+        this.dataIncome.original = response.data;        
+        for (var i = 0; i < response.data.length; i++) {
+            this.dataIncome.labels.push(this.month[response.data[i].month - 1]);
+            this.dataIncome.data.push(response.data[i].total);
+            this.dataIncome.total += parseInt(response.data[i].total);
+        }
+        this.setChart("income-report");
+      }    
+    },
+    error => {
+      alert('failed to load inventory data');
+    });
   }
 
   setChart(identifier) {
@@ -30,10 +50,10 @@ export class DashboardReportIncomeComponent implements OnInit {
     this.incomeReport = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ["Jan", "Feb", "Mar", "Apr", "Mar", "Mei"],
+            labels: this.dataIncome.labels,
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                label: 'Laporan Pendapatan Bulanan',
+                data: this.dataIncome.data,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -65,7 +85,4 @@ export class DashboardReportIncomeComponent implements OnInit {
     });
   }
 
-  get() {
-
-  }
 }

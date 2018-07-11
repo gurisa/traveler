@@ -15,11 +15,34 @@
           </div>
 
           <div class="columns">
-            <div class="column is-5">
-              <canvas id="income-report" width="400" height="400"></canvas>
-            </div>
             <div class="column is-7">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum molestias debitis voluptates aut mollitia illo laboriosam, dolore corporis sapiente natus ipsum illum iure ullam corrupti sunt, tenetur beatae? Eius, impedit.
+              <canvas id="income-report" width="400" height="400" style="height: 350px;"></canvas>
+            </div>
+            <div class="column is-5">
+              <table class="table" *ngIf="dataIncome.original?.length > 0">
+                <thead>
+                  <tr>
+                    <th>Month</th>                    
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>Month</th>                    
+                    <th>Total</th>
+                  </tr>
+                </tfoot>                    
+                <tbody>
+                  <tr class="" *ngFor="let data of dataIncome.original">
+                    <td>{{ this.month[data.month - 1] }}</td>
+                    <td>Rp{{ data.total }}</td>
+                  </tr>
+                  <tr class="is-selected">
+                    <td>Summary:</td>
+                    <td><b>Rp{{ dataIncome.total }}</b></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>          
 
