@@ -88,19 +88,27 @@ export class AuthService {
   }
 
   getUserId() {
-    return this.me().id;
+    if (this.me()) {
+      return this.me().id;
+    }    
   }
 
   getUserName() {
-    return this.me().name;
+    if (this.me()) {
+      return this.me().name;
+    }    
   }
 
   getUserEmail() {
-    return this.me().email;
+    if (this.me()) {
+      return this.me().email;
+    }    
   }
 
   getUserAuthority() {
-    return this.me().authority;
+    if (this.me()) {
+      return this.me().authority;
+    }    
   }
 
 }
