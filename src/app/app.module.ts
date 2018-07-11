@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http, RequestOptions } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router'; 
 
@@ -13,6 +13,7 @@ import { AppSetting } from './app-setting.service';
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { AuthModule } from './auth/auth.module';
 
 import { AppComponent } from './app.component';
 
@@ -20,7 +21,6 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
-
 
 @NgModule({
   declarations: [
@@ -36,6 +36,7 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     RouterModule,
     BrowserAnimationsModule,
+    AuthModule,
     CoreModule,  
     DashboardModule,
     AppRoutingModule,//must be the last lol
@@ -44,7 +45,7 @@ import { HomeComponent } from './home/home.component';
     AuthService,
     AuthGuard,
     GuestGuard,
-    AppSetting
+    AppSetting,
   ],
   bootstrap: [
     AppComponent

@@ -29,12 +29,12 @@ export class DashboardEmployeeComponent implements OnInit {
     return this.employees;
   }
   
-  gets() {
-    this.http.get(AppSetting.API + '/employees')
+  gets() { 
+    this.EmployeeService.gets()
     .subscribe(response => {
-      if (response.json().status) {
-        this.employees = response.json().data;
-      }      
+      if (response && response.status) {
+        this.employees = response.data;
+      }     
     });
   }
 

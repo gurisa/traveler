@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { AuthService } from '../../service/auth.service';
 import { Router } from '@angular/router';
 import { AppSetting } from './../../app-setting.service';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-user',
@@ -16,7 +17,8 @@ export class DashboardUserComponent implements OnInit {
   constructor(
     private http: Http,
     private AuthService: AuthService,
-    private router: Router
+    private router: Router,
+    private UserService: UserService
   ) { 
 
   }
@@ -26,12 +28,13 @@ export class DashboardUserComponent implements OnInit {
   }
 
   getUsers() {
-    this.http.get(AppSetting.API + '/users')
+    this.UserService.gets()
     .subscribe(response => {
-      if (response.json().status) {
-        this.users = response.json().data;
-      }      
-    });    
+      if (response && response.status) {
+        this.users = response.data;
+      }     
+    });
+  
   }
 
   changeUser(id) {
@@ -51,16 +54,15 @@ export class DashboardUserComponent implements OnInit {
   deleteUser(id) {
     if (id && id != this.AuthService.getUserId()) {
       if (confirm('Are you sure want to delete this user?')) {
-        this.http.delete(AppSetting.API + '/users/' + id)
+        this.UserService.delete(id)
         .subscribe(response => {
-          let index = this.users.indexOf(id);
-          this.users.splice(index, 1);
+          if (response && response.status) {
+            let index = this.users.indexOf(id);
+            this.users.splice(index, 1);
+          }
         },
         error => {
           alert('fail delete user');
-        },
-        () => {
-          alert('success delete user, this is you :p');
         });
       }      
     }

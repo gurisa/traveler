@@ -11,6 +11,8 @@ import { RouteService } from '../service/route.service';
 import { ReportService } from '../service/report.service';
 import { AuthGuard } from '../service/auth-guard.service';
 
+import { AuthModule } from './../auth/auth.module';
+
 import { CoreModule } from './../core/core.module';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
@@ -47,7 +49,8 @@ import { DashboardRouteChangeComponent } from './route/change/change.component';
     CoreModule,
     DashboardRoutingModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    AuthModule
   ],
   declarations: [
     DashboardComponent,
