@@ -66,7 +66,19 @@
       <div *ngIf="routes?.length > 0">
      
         <div class="columns" style="margin-bottom: 35px;">
-          <div class="column is-5">
+          <div class="column is-4">
+            <p class="control has-icons-left">
+              <span class="select" *ngIf="regencies?.length > 0">
+                <select>
+                  <option *ngFor="let regency of regencies">{{regency.name}}</option>
+                </select>
+              </span>
+              <span class="icon is-small is-left">
+                <i class="fas fa-globe"></i>
+              </span>
+            </p>
+          </div>
+          <div class="column is-4">
             <div class="field">
               <p class="control has-icons-left">
                 <span class="select" *ngIf="regencies?.length > 0">
@@ -77,10 +89,10 @@
                 <span class="icon is-small is-left">
                   <i class="fas fa-globe"></i>
                 </span>
-              </p>
+              </p>              
             </div>
           </div>
-          <div class="column is-7">
+          <div class="column is-4">
             <div class="field has-addons is-pulled-right">
               <p class="control">
                 <input class="input" type="text" placeholder="Find your own paradise here..">
@@ -139,7 +151,7 @@
                           </span>
                           <span>Add</span>
                       </button>
-                      <button class="button is-danger" routerLink="/dashboard">
+                      <button class="button is-danger" routerLink="/dashboard" disabled>
                           <span class="icon">
                             <i class="fas fa-shopping-cart"></i>
                           </span>

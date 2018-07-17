@@ -21,6 +21,13 @@ export class AuthService {
     }
     return false;
   }
+  
+  register(data) {
+    return this.http.post(AppSetting.API + '/auth/register', data)
+      .map(response => {
+        return response;
+      });
+  }
 
   login(credential) {
     if (this.validate(credential)) {

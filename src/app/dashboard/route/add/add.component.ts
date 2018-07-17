@@ -43,7 +43,7 @@ export class DashboardRouteAddComponent implements OnInit {
   }
   
   getTransportations() {
-    this.TransportationService.gets()
+    this.TransportationService.active()
     .subscribe(response => {
       if (response && response.status) {
         this.transportations = response.data;

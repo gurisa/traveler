@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { AuthService } from './../../service/auth.service';
 import { UserService } from './../../service/user.service';
+import { TransactionService } from './../../service/transaction.service';
 
 @Component({
   selector: 'app-home',
@@ -22,6 +23,7 @@ export class DashboardHomeComponent implements OnInit {
   constructor(
     private AuthService: AuthService,
     private UserService: UserService,
+    private TransactionService: TransactionService,
     private router: Router,
   ) {     
     this.menu['profile'] = true;
@@ -77,6 +79,11 @@ export class DashboardHomeComponent implements OnInit {
     localStorage.setItem('cart', JSON.stringify(this.carts));
   }
 
+  removeCart() {
+    this.carts = [];
+    localStorage.removeItem('cart');
+  }
+
   inc(route) {
     for (let i = 0; i < this.carts.length; i++) {
       if (this.carts[i].id === route) {
@@ -122,17 +129,22 @@ export class DashboardHomeComponent implements OnInit {
 
   buyCart() {
     if (confirm('Are you sure want to buy all the tickets?')) {
-      // this.http.delete(AppSetting.API + '/users/' + id)
-      // .subscribe(response => {
-      //   let index = this.users.indexOf(id);
-      //   this.users.splice(index, 1);
-      // },
-      // error => {
-      //   alert('fail delete user');
-      // },
-      // () => {
-      //   alert('success delete user, this is you :p');
-      // });
+      let data = {
+        'data': this.carts,
+        'user_id': this.AuthService.getUserId()
+      };
+      this.TransactionService.store(data)
+        .subscribe(response => {
+          if (response && response.status) {
+            alert('success buy tickets');
+            this.removeCart();
+            this.showMenu('ticket');
+            this.getTickets();
+          }     
+        },
+        error => {
+          alert('failed to buy ticket');
+        });
     }
   }
 

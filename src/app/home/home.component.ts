@@ -113,9 +113,9 @@ export class HomeComponent implements OnInit {
       cart[index].cart += data.cart;
     }
     else {  
-      cart.push(data);
+      cart.push(data);      
     }
-
+    alert('Success add to cart');
     localStorage.setItem('cart', JSON.stringify(cart));
   }
 }

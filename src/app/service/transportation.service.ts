@@ -28,6 +28,13 @@ export class TransportationService {
     });
   }
 
+  active() {
+    return this.authHttp.get(AppSetting.API + '/transportations/active')
+    .map(response => {
+      return response.json();    
+    });
+  }
+
   update(id, transportation) {
     return this.authHttp.patch(AppSetting.API + '/transportations/' + id, transportation)
       .map(response => {
