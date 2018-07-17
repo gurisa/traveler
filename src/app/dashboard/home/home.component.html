@@ -181,15 +181,18 @@
                 </header>
                 <div class="card-content">
                   <div class="content is-primary">
-                    <span *ngIf="ticket.status == 0" class="tag is-warning">Pending payment</span>
-                    <span *ngIf="ticket.status != 0" class="tag is-black">{{ ticket.departure_at }}</span>
+                    {{ticket.status}}
+                    <span *ngIf="ticket.detail_status === 0" class="tag is-warning">Pending payment</span>
+                    <span *ngIf="ticket.detail_status !== 0" class="tag is-black">{{ ticket.departure_at }}</span>
                   </div>
                 </div>
                 <footer class="card-footer">
-                  <a *ngIf="ticket.status" class="card-footer-item" (click)="showCode(ticket.detail_id)">
-                      <b>Show Code</b>
+                  <a *ngIf="ticket.detail_status !== 0" class="card-footer-item" (click)="showCode(ticket.detail_id)">
+                    <b>Show Code</b>
                   </a>
-                  <span *ngIf="!ticket.status"></span>
+                  <a *ngIf="ticket.detail_status === 0" class="card-footer-item" (click)="toggleModal('payment');">
+                    <b>Buy Ticket</b>
+                  </a>
                 </footer>
               </div>
             </div>
@@ -207,3 +210,69 @@
     </div>
   </div>
 </section>
+
+<div class="modal" [ngClass]="{ 'is-active': modal.payment }">
+  <div class="modal-background" (click)="toggleModal('payment');"></div>
+  <div class="modal-content">
+    <article class="message">
+      <div class="message-header">
+        <p>Pembayaran Tiket</p>
+      </div>
+      <div class="message-body">
+        Silahkan lakukan pembayaran tiket melalui rekening berikut: <br>
+        <div class="columns">
+          <div class="column is-6">
+            <img src="assets/images/logo/bca.png" alt="">
+            <p class="has-text-centered"><b>PT Mencari Cinta Sejati</b><br> 22341859104</p>
+          </div>
+          <div class="column is-6">
+            <img src="assets/images/logo/bni.png" alt="">
+            <p class="has-text-centered"><b>PT Mencari Cinta Sejati</b><br> 51418418141</p>
+          </div>
+        </div> 
+        <br>        
+      </div>
+    </article>
+  </div>
+  <button class="modal-close is-large" aria-label="close" (click)="toggleModal('payment');"></button>
+</div>
+
+<div class="modal" [ngClass]="{ 'is-active': modal.code }">
+  <div class="modal-background" (click)="toggleModal('code');"></div>
+  <div class="modal-content">
+    <article class="message">
+      <div class="message-header">
+        <p>Tiket Anda</p>
+      </div>
+      <div class="message-body">
+        <div class="columns">
+          <div class="column is-3"></div>
+          <div class="column is-6 has-text-centered">
+            <img src="assets/images/logo/qrcode.png" alt="">
+            <p>
+              Silahkan scan qr code di atas untuk menggunakan tiket. Jika qr code tidak bisa digunakan, gunakan kode tiket di bawah ini: <br>
+              <span class="tag is-black is-large">{{code}}</span>
+            </p>
+          </div>
+          <div class="column is-3"></div>
+        </div>
+      </div>
+    </article>
+  </div>
+  <button class="modal-close is-large" aria-label="close" (click)="toggleModal('code');"></button>
+</div>
+
+<div class="modal" [ngClass]="{ 'is-active': modal.notification }">
+  <div class="modal-background" (click)="toggleModal('notification');"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title"></p>
+      <button class="delete" aria-label="close" (click)="toggleModal('notification');"></button>
+    </header>
+    <section class="modal-card-body">{{ notification.message }}</section>
+    <footer class="modal-card-foot">
+      <button class="button {{ notification.type }}" (click)="toggleModal('notification');">OK</button>
+    </footer>
+  </div>
+</div>
+

@@ -14,6 +14,17 @@ export class DashboardHomeComponent implements OnInit {
   menu = [];
   tickets = [];
   carts = [];
+  modal = {
+    payment: false,
+    code: false,
+    notification: false,
+  };
+  code = '';
+
+  notification = {
+    message: '',
+    type: '',
+  };
 
   account = {
     password: '',
@@ -59,15 +70,15 @@ export class DashboardHomeComponent implements OnInit {
       this.AuthService.update(this.account)
       .subscribe(
         data => {
-          alert(data.message);
+          this.showNotificaiton(data.message, 'is-success');
         },
         error => {
-          alert('failed to update profile');
+          this.showNotificaiton('failed to update profile', 'is-danger');
         }
       );
     }
     else {
-      alert('invalid profile data');
+      this.showNotificaiton('invalid profile data', 'is-warning');
     }    
   }
 
@@ -136,14 +147,14 @@ export class DashboardHomeComponent implements OnInit {
       this.TransactionService.store(data)
         .subscribe(response => {
           if (response && response.status) {
-            alert('success buy tickets');
+            this.showNotificaiton('success buy tickets', 'is-success');
             this.removeCart();
             this.showMenu('ticket');
             this.getTickets();
           }     
         },
         error => {
-          alert('failed to buy ticket');
+          this.showNotificaiton('failed to buy ticket', 'is-danger');
         });
     }
   }
@@ -163,7 +174,18 @@ export class DashboardHomeComponent implements OnInit {
 
     for (var i = 0; i < 5; i++)
       text += possible.charAt(Math.floor(Math.random() * possible.length));
+    
+    this.code = id + 'XYZ' + text + '789' + id;
+    this.modal.code = !this.modal.code;
+  }
 
-    alert(id + 'XYZ' + text + '789' + id);
+  toggleModal(index) {
+    this.modal[index] = !this.modal[index];
+  }
+
+  showNotificaiton(data, type = '') {
+    this.toggleModal('notification');
+    this.notification.type = type;
+    this.notification.message = data;
   }
 }
