@@ -187,7 +187,7 @@
                   </div>
                 </div>
                 <footer class="card-footer">
-                  <a *ngIf="ticket.detail_status !== 0" class="card-footer-item" (click)="showCode(ticket.detail_id)">
+                  <a *ngIf="ticket.detail_status !== 0" class="card-footer-item" (click)="showCode(ticket.ticket_token)">
                     <b>Show Code</b>
                   </a>
                   <a *ngIf="ticket.detail_status === 0" class="card-footer-item" (click)="toggleModal('payment');">

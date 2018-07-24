@@ -169,13 +169,14 @@ export class DashboardHomeComponent implements OnInit {
   }
 
   showCode(id) {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWabcdefghijklmnopqrstuvwxyz0123456";
+    // var text = "";
+    // var possible = "ABCDEFGHIJKLMNOPQRSTUVWabcdefghijklmnopqrstuvwxyz0123456";
 
-    for (var i = 0; i < 5; i++)
-      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    // for (var i = 0; i < 5; i++)
+    //   text += possible.charAt(Math.floor(Math.random() * possible.length));
     
-    this.code = id + 'XYZ' + text + '789' + id;
+    // this.code = id + 'XYZ' + text + '789' + id;
+    this.code = id;
     this.modal.code = !this.modal.code;
   }
 
